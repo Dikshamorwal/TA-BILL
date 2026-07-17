@@ -292,7 +292,8 @@
         size: A4;
         margin: 0;
       }
-      #action-buttons {
+      #action-buttons,
+      .no-print {
         display: none !important;
       }
     }
@@ -367,6 +368,7 @@
           <th rowspan="2">सड़क मील भत्ता के लिए दूरी कि.मी. में Distance in Kms. for road mileage</th>
           <th rowspan="2">ठहराव की अवधि Duration of halt</th>
           <th rowspan="2">यात्रा का प्रयोजन Purpose of journey</th>
+          <th rowspan="2" class="col-action no-print">कार्य / Act</th>
         </tr>
         <tr>
           <th>दिनांक एवं समय Date and time</th>
@@ -375,9 +377,9 @@
           <th>तक To</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody id="journeyBody">
         <tr>
-          <td>1</td>
+          <td class="row-sno">1</td>
           <td><input type="text" name="dep_time_1"></td>
           <td><input type="text" name="dep_from_1"></td>
           <td><input type="text" name="arr_time_1"></td>
@@ -387,9 +389,10 @@
           <td><input type="text" name="km_1"></td>
           <td><input type="text" name="halt_1"></td>
           <td><input type="text" name="purpose_1"></td>
+          <td class="col-action no-print" style="text-align: center;"><button type="button" class="btn-delete" onclick="deleteJourneyRow(this)" style="background:#c0392b; color:#fff; border:none; padding:2px 8px; border-radius:3px; cursor:pointer; font-weight:bold; font-size:9pt;">X</button></td>
         </tr>
         <tr>
-          <td>2</td>
+          <td class="row-sno">2</td>
           <td><input type="text" name="dep_time_2"></td>
           <td><input type="text" name="dep_from_2"></td>
           <td><input type="text" name="arr_time_2"></td>
@@ -399,9 +402,10 @@
           <td><input type="text" name="km_2"></td>
           <td><input type="text" name="halt_2"></td>
           <td><input type="text" name="purpose_2"></td>
+          <td class="col-action no-print" style="text-align: center;"><button type="button" class="btn-delete" onclick="deleteJourneyRow(this)" style="background:#c0392b; color:#fff; border:none; padding:2px 8px; border-radius:3px; cursor:pointer; font-weight:bold; font-size:9pt;">X</button></td>
         </tr>
         <tr>
-          <td>3</td>
+          <td class="row-sno">3</td>
           <td><input type="text" name="dep_time_3"></td>
           <td><input type="text" name="dep_from_3"></td>
           <td><input type="text" name="arr_time_3"></td>
@@ -411,9 +415,10 @@
           <td><input type="text" name="km_3"></td>
           <td><input type="text" name="halt_3"></td>
           <td><input type="text" name="purpose_3"></td>
+          <td class="col-action no-print" style="text-align: center;"><button type="button" class="btn-delete" onclick="deleteJourneyRow(this)" style="background:#c0392b; color:#fff; border:none; padding:2px 8px; border-radius:3px; cursor:pointer; font-weight:bold; font-size:9pt;">X</button></td>
         </tr>
         <tr>
-          <td>4</td>
+          <td class="row-sno">4</td>
           <td><input type="text" name="dep_time_4"></td>
           <td><input type="text" name="dep_from_4"></td>
           <td><input type="text" name="arr_time_4"></td>
@@ -423,9 +428,10 @@
           <td><input type="text" name="km_4"></td>
           <td><input type="text" name="halt_4"></td>
           <td><input type="text" name="purpose_4"></td>
+          <td class="col-action no-print" style="text-align: center;"><button type="button" class="btn-delete" onclick="deleteJourneyRow(this)" style="background:#c0392b; color:#fff; border:none; padding:2px 8px; border-radius:3px; cursor:pointer; font-weight:bold; font-size:9pt;">X</button></td>
         </tr>
         <tr>
-          <td>5</td>
+          <td class="row-sno">5</td>
           <td><input type="text" name="dep_time_5"></td>
           <td><input type="text" name="dep_from_5"></td>
           <td><input type="text" name="arr_time_5"></td>
@@ -435,9 +441,10 @@
           <td><input type="text" name="km_5"></td>
           <td><input type="text" name="halt_5"></td>
           <td><input type="text" name="purpose_5"></td>
+          <td class="col-action no-print" style="text-align: center;"><button type="button" class="btn-delete" onclick="deleteJourneyRow(this)" style="background:#c0392b; color:#fff; border:none; padding:2px 8px; border-radius:3px; cursor:pointer; font-weight:bold; font-size:9pt;">X</button></td>
         </tr>
         <tr>
-          <td>6</td>
+          <td class="row-sno">6</td>
           <td><input type="text" name="dep_time_6"></td>
           <td><input type="text" name="dep_from_6"></td>
           <td><input type="text" name="arr_time_6"></td>
@@ -447,9 +454,13 @@
           <td><input type="text" name="km_6"></td>
           <td><input type="text" name="halt_6"></td>
           <td><input type="text" name="purpose_6"></td>
+          <td class="col-action no-print" style="text-align: center;"><button type="button" class="btn-delete" onclick="deleteJourneyRow(this)" style="background:#c0392b; color:#fff; border:none; padding:2px 8px; border-radius:3px; cursor:pointer; font-weight:bold; font-size:9pt;">X</button></td>
         </tr>
       </tbody>
     </table>
+    <div style="margin-top: 10px;" class="no-print">
+      <button type="button" onclick="addJourneyRow()" style="padding: 6px 12px; background: #27ae60; color: #fff; border: none; border-radius: 4px; cursor: pointer; font-weight: bold; font-size: 10pt;">+ Add Row / पंक्ति जोड़ें</button>
+    </div>
   </div>
 
   <!-- ========== PAGE 2 ========== -->
@@ -933,6 +944,89 @@
 
       // Initialize conversions
       convertTableInputsToTextareas();
+
+      // Dynamic journey row functions
+      function addJourneyRow() {
+        var tbody = document.getElementById('journeyBody');
+        var rowCount = tbody.querySelectorAll('tr').length;
+        var newRowNum = rowCount + 1;
+        
+        var tr = document.createElement('tr');
+        tr.innerHTML = ' \
+          <td class="row-sno">' + newRowNum + '</td> \
+          <td><textarea name="dep_time_' + newRowNum + '" rows="1"></textarea></td> \
+          <td><textarea name="dep_from_' + newRowNum + '" rows="1"></textarea></td> \
+          <td><textarea name="arr_time_' + newRowNum + '" rows="1"></textarea></td> \
+          <td><textarea name="arr_to_' + newRowNum + '" rows="1"></textarea></td> \
+          <td><textarea name="mode_' + newRowNum + '" rows="1"></textarea></td> \
+          <td><textarea name="fare_' + newRowNum + '" rows="1"></textarea></td> \
+          <td><textarea name="km_' + newRowNum + '" rows="1"></textarea></td> \
+          <td><textarea name="halt_' + newRowNum + '" rows="1"></textarea></td> \
+          <td><textarea name="purpose_' + newRowNum + '" rows="1"></textarea></td> \
+          <td class="col-action no-print" style="text-align: center;"><button type="button" class="btn-delete" onclick="deleteJourneyRow(this)" style="background:#c0392b; color:#fff; border:none; padding:2px 8px; border-radius:3px; cursor:pointer; font-weight:bold; font-size:9pt;">X</button></td> \
+        ';
+        
+        tbody.appendChild(tr);
+        
+        // Style and add auto-resize event listeners to new textareas
+        tr.querySelectorAll('textarea').forEach(function(textarea) {
+          textarea.style.width = '100%';
+          textarea.style.border = 'none';
+          textarea.style.fontSize = '8.5pt';
+          textarea.style.padding = '1px 2px';
+          textarea.style.background = 'transparent';
+          textarea.style.fontFamily = 'inherit';
+          textarea.style.resize = 'none';
+          textarea.style.overflow = 'hidden';
+          textarea.style.display = 'block';
+          textarea.style.minHeight = '20px';
+          textarea.style.lineHeight = '1.25';
+          textarea.style.outline = 'none';
+          
+          textarea.addEventListener('focus', function() {
+            this.style.background = '#f0f8ff';
+          });
+          textarea.addEventListener('blur', function() {
+            this.style.background = 'transparent';
+          });
+          textarea.addEventListener('input', function() {
+            this.style.height = 'auto';
+            this.style.height = this.scrollHeight + 'px';
+          });
+        });
+      }
+
+      function deleteJourneyRow(btn) {
+        var row = btn.closest('tr');
+        var tbody = row.parentNode;
+        if (tbody.querySelectorAll('tr').length <= 1) {
+          alert('कम से कम एक पंक्ति होनी चाहिए! / At least one row is required!');
+          return;
+        }
+        row.parentNode.removeChild(row);
+        reindexJourneyTable();
+      }
+
+      function reindexJourneyTable() {
+        var rows = document.querySelectorAll('#journeyBody tr');
+        for (var i = 0; i < rows.length; i++) {
+          var row = rows[i];
+          var rowNum = i + 1;
+          row.querySelector('.row-sno').textContent = rowNum;
+          
+          row.querySelectorAll('textarea, input').forEach(function(field) {
+            var nameAttr = field.name;
+            if (nameAttr) {
+              var baseName = nameAttr.replace(/_\d+$/, '');
+              field.name = baseName + '_' + rowNum;
+            }
+          });
+        }
+      }
+
+      // Expose functions globally for onclick events
+      window.addJourneyRow = addJourneyRow;
+      window.deleteJourneyRow = deleteJourneyRow;
 
       function fillSampleData() {
         var sampleData = {
