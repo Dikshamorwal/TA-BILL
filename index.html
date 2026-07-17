@@ -469,9 +469,6 @@
         </tr>
       </tbody>
     </table>
-    <div style="margin-top: 10px;" class="no-print">
-      <button type="button" onclick="addJourneyRow()" style="padding: 6px 12px; background: #27ae60; color: #fff; border: none; border-radius: 4px; cursor: pointer; font-weight: bold; font-size: 10pt;">+ Add Row / पंक्ति जोड़ें</button>
-    </div>
   </div>
 
   <!-- ========== PAGE 2 ========== -->
@@ -957,74 +954,7 @@
       convertTableInputsToTextareas();
 
       // Dynamic journey row functions
-      function addJourneyRow() {
-        var tbody = document.getElementById('journeyBody');
-        var rowCount = tbody.querySelectorAll('tr').length;
-        var newRowNum = rowCount + 1;
-        
-        var tr = document.createElement('tr');
-        tr.innerHTML = ' \
-          <td class="row-sno">' + newRowNum + '</td> \
-          <td><textarea name="dep_time_' + newRowNum + '" rows="1"></textarea></td> \
-          <td><textarea name="dep_from_' + newRowNum + '" rows="1"></textarea></td> \
-          <td><textarea name="arr_time_' + newRowNum + '" rows="1"></textarea></td> \
-          <td><textarea name="arr_to_' + newRowNum + '" rows="1"></textarea></td> \
-          <td><textarea name="mode_' + newRowNum + '" rows="1"></textarea></td> \
-          <td><textarea name="fare_' + newRowNum + '" rows="1"></textarea></td> \
-          <td><textarea name="km_' + newRowNum + '" rows="1"></textarea></td> \
-          <td><textarea name="halt_' + newRowNum + '" rows="1"></textarea></td> \
-          <td><textarea name="purpose_' + newRowNum + '" rows="1"></textarea></td> \
-        ';
-        
-        tbody.appendChild(tr);
-        
-        // Style and add auto-resize event listeners to new textareas
-        tr.querySelectorAll('textarea').forEach(function(textarea) {
-          textarea.style.width = '100%';
-          textarea.style.border = 'none';
-          textarea.style.fontSize = '8.5pt';
-          textarea.style.padding = '1px 2px';
-          textarea.style.background = 'transparent';
-          textarea.style.fontFamily = 'inherit';
-          textarea.style.resize = 'none';
-          textarea.style.overflow = 'hidden';
-          textarea.style.display = 'block';
-          textarea.style.minHeight = '20px';
-          textarea.style.lineHeight = '1.25';
-          textarea.style.outline = 'none';
-          
-          textarea.addEventListener('focus', function() {
-            this.style.background = '#f0f8ff';
-          });
-          textarea.addEventListener('blur', function() {
-            this.style.background = 'transparent';
-          });
-          textarea.addEventListener('input', function() {
-            this.style.height = 'auto';
-            this.style.height = this.scrollHeight + 'px';
-          });
-        });
-      }
-
-      function reindexJourneyTable() {
-        var rows = document.querySelectorAll('#journeyBody tr');
-        for (var i = 0; i < rows.length; i++) {
-          var row = rows[i];
-          var rowNum = i + 1;
-          row.querySelector('.row-sno').textContent = rowNum;
-          
-          row.querySelectorAll('textarea, input').forEach(function(field) {
-            var nameAttr = field.name;
-            if (nameAttr) {
-              var baseName = nameAttr.replace(/_\d+$/, '');
-              field.name = baseName + '_' + rowNum;
-            }
-          });
-        }
-      }
-
-      // Expose functions globally for onclick events
-      window.addJourneyRow = addJourneyRow;
+      // Dynamic rows disabled
 
       function fillSampleData() {
         var sampleData = {
