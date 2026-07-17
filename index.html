@@ -1171,26 +1171,80 @@
       function enableColumnResizing() {
         var tables = document.querySelectorAll('table.data-table');
         tables.forEach(function(table) {
-          var cols = table.querySelectorAll('thead th');
-          cols.forEach(function(col) {
-            if (col.getAttribute('colspan') > 1) return;
-            if (col.querySelector('.resizer')) return;
+          var colgroup = table.querySelector('colgroup');
+          if (!colgroup) {
+            colgroup = document.createElement('colgroup');
+            var firstRow = table.querySelector('tbody tr');
+            if (!firstRow) return;
+            var cellCount = firstRow.querySelectorAll('td').length;
+            for (var i = 0; i < cellCount; i++) {
+              var col = document.createElement('col');
+              colgroup.appendChild(col);
+            }
+            table.insertBefore(colgroup, table.firstChild);
+          }
+          
+          var grid = [];
+          var rows = table.querySelectorAll('thead tr');
+          rows.forEach(function(tr, rowIndex) {
+            var colIndex = 0;
+            var ths = tr.querySelectorAll('th');
+            ths.forEach(function(th) {
+              while (grid[rowIndex] && grid[rowIndex][colIndex]) {
+                colIndex++;
+              }
+              
+              var rowspan = parseInt(th.getAttribute('rowspan'), 10) || 1;
+              var colspan = parseInt(th.getAttribute('colspan'), 10) || 1;
+              
+              for (var r = 0; r < rowspan; r++) {
+                if (!grid[rowIndex + r]) grid[rowIndex + r] = [];
+                for (var c = 0; c < colspan; c++) {
+                  grid[rowIndex + r][colIndex + c] = th;
+                }
+              }
+              
+              th.dataset.colIndex = colIndex;
+              th.dataset.colspan = colspan;
+              
+              colIndex += colspan;
+            });
+          });
+          
+          var allThs = table.querySelectorAll('thead th');
+          allThs.forEach(function(th) {
+            var colIndex = parseInt(th.dataset.colIndex, 10);
+            var colspan = parseInt(th.dataset.colspan, 10);
+            if (colspan > 1) return;
+            if (th.querySelector('.resizer')) return;
             
             var resizer = document.createElement('div');
             resizer.classList.add('resizer');
             resizer.classList.add('no-print');
-            col.appendChild(resizer);
+            th.appendChild(resizer);
             
             var startX, startWidth;
+            var colsInGroup = colgroup.querySelectorAll('col');
+            var targetCol = colsInGroup[colIndex];
             
             resizer.addEventListener('mousedown', function(e) {
               startX = e.pageX;
-              startWidth = col.offsetWidth;
+              startWidth = targetCol.offsetWidth || th.offsetWidth;
               resizer.classList.add('resizing');
+              
+              table.style.tableLayout = 'fixed';
+              
+              colsInGroup.forEach(function(c, idx) {
+                if (!c.style.width) {
+                  var relativeTh = grid[grid.length - 1][idx];
+                  c.style.width = (relativeTh ? relativeTh.offsetWidth : 100) + 'px';
+                }
+              });
               
               var onMouseMove = function(e) {
                 var width = startWidth + (e.pageX - startX);
-                col.style.width = width + 'px';
+                if (width < 30) width = 30;
+                targetCol.style.width = width + 'px';
               };
               
               var onMouseUp = function() {
