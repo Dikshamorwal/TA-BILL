@@ -351,6 +351,23 @@
     .datepicker-day.empty:hover {
       background: none;
     }
+    table.data-table td input,
+    table.data-table td textarea {
+      width: 100%;
+      border: none;
+      font-size: 8.5pt;
+      padding: 1px 2px;
+      background: transparent;
+      font-family: inherit;
+      outline: none;
+      box-sizing: border-box;
+    }
+    table.data-table td textarea {
+      resize: none;
+      overflow: hidden;
+      display: block;
+      line-height: 1.25;
+    }
 
     @media print {
       body {
@@ -464,13 +481,11 @@
         <tr>
           <td class="row-sno">1</td>
           <td>
-            <input type="text" name="dep_date_1" class="datepicker" placeholder="DD.MM.YYYY" onclick="showDatepicker(this)" style="cursor:pointer;" autocomplete="off">
-            <input type="text" name="dep_time_1" placeholder="HH:MM" autocomplete="off">
+            <textarea name="dep_time_1" class="datepicker" placeholder="DD.MM.YYYY&#10;HH:MM" onclick="showDatepicker(this)" style="cursor:pointer;" autocomplete="off" rows="2"></textarea>
           </td>
           <td><input type="text" name="dep_from_1"></td>
           <td>
-            <input type="text" name="arr_date_1" class="datepicker" placeholder="DD.MM.YYYY" onclick="showDatepicker(this)" style="cursor:pointer;" autocomplete="off">
-            <input type="text" name="arr_time_1" placeholder="HH:MM" autocomplete="off">
+            <textarea name="arr_time_1" class="datepicker" placeholder="DD.MM.YYYY&#10;HH:MM" onclick="showDatepicker(this)" style="cursor:pointer;" autocomplete="off" rows="2"></textarea>
           </td>
           <td><input type="text" name="arr_to_1"></td>
           <td><input type="text" name="mode_1"></td>
@@ -482,13 +497,11 @@
         <tr>
           <td class="row-sno">2</td>
           <td>
-            <input type="text" name="dep_date_2" class="datepicker" placeholder="DD.MM.YYYY" onclick="showDatepicker(this)" style="cursor:pointer;" autocomplete="off">
-            <input type="text" name="dep_time_2" placeholder="HH:MM" autocomplete="off">
+            <textarea name="dep_time_2" class="datepicker" placeholder="DD.MM.YYYY&#10;HH:MM" onclick="showDatepicker(this)" style="cursor:pointer;" autocomplete="off" rows="2"></textarea>
           </td>
           <td><input type="text" name="dep_from_2"></td>
           <td>
-            <input type="text" name="arr_date_2" class="datepicker" placeholder="DD.MM.YYYY" onclick="showDatepicker(this)" style="cursor:pointer;" autocomplete="off">
-            <input type="text" name="arr_time_2" placeholder="HH:MM" autocomplete="off">
+            <textarea name="arr_time_2" class="datepicker" placeholder="DD.MM.YYYY&#10;HH:MM" onclick="showDatepicker(this)" style="cursor:pointer;" autocomplete="off" rows="2"></textarea>
           </td>
           <td><input type="text" name="arr_to_2"></td>
           <td><input type="text" name="mode_2"></td>
@@ -500,13 +513,11 @@
         <tr>
           <td class="row-sno">3</td>
           <td>
-            <input type="text" name="dep_date_3" class="datepicker" placeholder="DD.MM.YYYY" onclick="showDatepicker(this)" style="cursor:pointer;" autocomplete="off">
-            <input type="text" name="dep_time_3" placeholder="HH:MM" autocomplete="off">
+            <textarea name="dep_time_3" class="datepicker" placeholder="DD.MM.YYYY&#10;HH:MM" onclick="showDatepicker(this)" style="cursor:pointer;" autocomplete="off" rows="2"></textarea>
           </td>
           <td><input type="text" name="dep_from_3"></td>
           <td>
-            <input type="text" name="arr_date_3" class="datepicker" placeholder="DD.MM.YYYY" onclick="showDatepicker(this)" style="cursor:pointer;" autocomplete="off">
-            <input type="text" name="arr_time_3" placeholder="HH:MM" autocomplete="off">
+            <textarea name="arr_time_3" class="datepicker" placeholder="DD.MM.YYYY&#10;HH:MM" onclick="showDatepicker(this)" style="cursor:pointer;" autocomplete="off" rows="2"></textarea>
           </td>
           <td><input type="text" name="arr_to_3"></td>
           <td><input type="text" name="mode_3"></td>
@@ -518,13 +529,11 @@
         <tr>
           <td class="row-sno">4</td>
           <td>
-            <input type="text" name="dep_date_4" class="datepicker" placeholder="DD.MM.YYYY" onclick="showDatepicker(this)" style="cursor:pointer;" autocomplete="off">
-            <input type="text" name="dep_time_4" placeholder="HH:MM" autocomplete="off">
+            <textarea name="dep_time_4" class="datepicker" placeholder="DD.MM.YYYY&#10;HH:MM" onclick="showDatepicker(this)" style="cursor:pointer;" autocomplete="off" rows="2"></textarea>
           </td>
           <td><input type="text" name="dep_from_4"></td>
           <td>
-            <input type="text" name="arr_date_4" class="datepicker" placeholder="DD.MM.YYYY" onclick="showDatepicker(this)" style="cursor:pointer;" autocomplete="off">
-            <input type="text" name="arr_time_4" placeholder="HH:MM" autocomplete="off">
+            <textarea name="arr_time_4" class="datepicker" placeholder="DD.MM.YYYY&#10;HH:MM" onclick="showDatepicker(this)" style="cursor:pointer;" autocomplete="off" rows="2"></textarea>
           </td>
           <td><input type="text" name="arr_to_4"></td>
           <td><input type="text" name="mode_4"></td>
@@ -536,13 +545,11 @@
         <tr>
           <td class="row-sno">5</td>
           <td>
-            <input type="text" name="dep_date_5" class="datepicker" placeholder="DD.MM.YYYY" onclick="showDatepicker(this)" style="cursor:pointer;" autocomplete="off">
-            <input type="text" name="dep_time_5" placeholder="HH:MM" autocomplete="off">
+            <textarea name="dep_time_5" class="datepicker" placeholder="DD.MM.YYYY&#10;HH:MM" onclick="showDatepicker(this)" style="cursor:pointer;" autocomplete="off" rows="2"></textarea>
           </td>
           <td><input type="text" name="dep_from_5"></td>
           <td>
-            <input type="text" name="arr_date_5" class="datepicker" placeholder="DD.MM.YYYY" onclick="showDatepicker(this)" style="cursor:pointer;" autocomplete="off">
-            <input type="text" name="arr_time_5" placeholder="HH:MM" autocomplete="off">
+            <textarea name="arr_time_5" class="datepicker" placeholder="DD.MM.YYYY&#10;HH:MM" onclick="showDatepicker(this)" style="cursor:pointer;" autocomplete="off" rows="2"></textarea>
           </td>
           <td><input type="text" name="arr_to_5"></td>
           <td><input type="text" name="mode_5"></td>
@@ -554,13 +561,11 @@
         <tr>
           <td class="row-sno">6</td>
           <td>
-            <input type="text" name="dep_date_6" class="datepicker" placeholder="DD.MM.YYYY" onclick="showDatepicker(this)" style="cursor:pointer;" autocomplete="off">
-            <input type="text" name="dep_time_6" placeholder="HH:MM" autocomplete="off">
+            <textarea name="dep_time_6" class="datepicker" placeholder="DD.MM.YYYY&#10;HH:MM" onclick="showDatepicker(this)" style="cursor:pointer;" autocomplete="off" rows="2"></textarea>
           </td>
           <td><input type="text" name="dep_from_6"></td>
           <td>
-            <input type="text" name="arr_date_6" class="datepicker" placeholder="DD.MM.YYYY" onclick="showDatepicker(this)" style="cursor:pointer;" autocomplete="off">
-            <input type="text" name="arr_time_6" placeholder="HH:MM" autocomplete="off">
+            <textarea name="arr_time_6" class="datepicker" placeholder="DD.MM.YYYY&#10;HH:MM" onclick="showDatepicker(this)" style="cursor:pointer;" autocomplete="off" rows="2"></textarea>
           </td>
           <td><input type="text" name="arr_to_6"></td>
           <td><input type="text" name="mode_6"></td>
@@ -1066,22 +1071,18 @@
           'pay': '56100',
           'level': '7',
           'headquarters': 'दिल्ली / Delhi',
-          'dep_date_1': '01.07.2026',
-          'dep_time_1': '08:00',
+          'dep_time_1': '01.07.2026\n08:00',
           'dep_from_1': 'दिल्ली / Delhi',
-          'arr_date_1': '01.07.2026',
-          'arr_time_1': '14:00',
+          'arr_time_1': '01.07.2026\n14:00',
           'arr_to_1': 'लखनऊ / Lucknow',
           'mode_1': 'रेल/एसी 3-टियर / Rail/AC 3-Tier',
           'fare_1': '1250.00',
           'km_1': '550',
           'halt_1': '2 दिन / Days',
           'purpose_1': 'निरीक्षण / Inspection',
-          'dep_date_2': '03.07.2026',
-          'dep_time_2': '16:00',
+          'dep_time_2': '03.07.2026\n16:00',
           'dep_from_2': 'लखनऊ / Lucknow',
-          'arr_date_2': '03.07.2026',
-          'arr_time_2': '22:00',
+          'arr_time_2': '03.07.2026\n22:00',
           'arr_to_2': 'दिल्ली / Delhi',
           'mode_2': 'रेल/एसी 3-टियर / Rail/AC 3-Tier',
           'fare_2': '1250.00',
@@ -1277,8 +1278,8 @@
           document.body.appendChild(datepickerDiv);
         }
         
-        // Parse current value (expects DD.MM.YYYY)
-        var parts = input.value.split('.');
+        // Parse current value (expects DD.MM.YYYY on line 1)
+        var parts = input.value.split('\n')[0].split('.');
         if (parts.length === 3) {
           var d = parseInt(parts[0], 10);
           var m = parseInt(parts[1], 10) - 1;
@@ -1362,17 +1363,28 @@
             dayDiv.textContent = d;
             
             var formattedDate = pad(d) + '.' + pad(currentMonth + 1) + '.' + currentYear;
-            if (activeInput && activeInput.value === formattedDate) {
+            if (activeInput && activeInput.value.split('\n')[0] === formattedDate) {
               dayDiv.classList.add('selected');
             }
             
             dayDiv.onclick = function(e) {
               e.stopPropagation();
               if (activeInput) {
-                activeInput.value = formattedDate;
+                var lines = activeInput.value.split('\n');
+                var timePart = '';
+                if (lines.length > 1) {
+                  timePart = lines.slice(1).join('\n');
+                }
+                activeInput.value = formattedDate + '\n' + timePart;
+                
                 var event = document.createEvent('HTMLEvents');
                 event.initEvent('change', true, false);
                 activeInput.dispatchEvent(event);
+                
+                var inputEvent = document.createEvent('HTMLEvents');
+                inputEvent.initEvent('input', true, false);
+                activeInput.dispatchEvent(inputEvent);
+                
                 hideDatepicker();
               }
             };
@@ -1411,6 +1423,13 @@
           if (!datepickerDiv.contains(e.target) && e.target !== activeInput) {
             hideDatepicker();
           }
+        }
+      });
+
+      document.addEventListener('input', function(e) {
+        if (e.target.tagName.toLowerCase() === 'textarea') {
+          e.target.style.height = 'auto';
+          e.target.style.height = e.target.scrollHeight + 'px';
         }
       });
 
