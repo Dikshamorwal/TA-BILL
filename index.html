@@ -268,6 +268,24 @@
       padding-top: 5px;
     }
 
+    /* Column resizer styling */
+    table.data-table th {
+      position: relative;
+    }
+    .resizer {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 6px;
+      cursor: col-resize;
+      user-select: none;
+      height: 100%;
+      z-index: 10;
+    }
+    .resizer:hover, .resizing {
+      background: rgba(0, 0, 0, 0.25);
+    }
+
     @media print {
       body {
         background: #fff;
@@ -1132,6 +1150,47 @@
           printForm();
         }
       });
+
+      // Enable drag-resizable columns on all data tables
+      function enableColumnResizing() {
+        var tables = document.querySelectorAll('table.data-table');
+        tables.forEach(function(table) {
+          var cols = table.querySelectorAll('thead th');
+          cols.forEach(function(col) {
+            if (col.getAttribute('colspan') > 1) return;
+            if (col.querySelector('.resizer')) return;
+            
+            var resizer = document.createElement('div');
+            resizer.classList.add('resizer');
+            resizer.classList.add('no-print');
+            col.appendChild(resizer);
+            
+            var startX, startWidth;
+            
+            resizer.addEventListener('mousedown', function(e) {
+              startX = e.pageX;
+              startWidth = col.offsetWidth;
+              resizer.classList.add('resizing');
+              
+              var onMouseMove = function(e) {
+                var width = startWidth + (e.pageX - startX);
+                col.style.width = width + 'px';
+              };
+              
+              var onMouseUp = function() {
+                resizer.classList.remove('resizing');
+                document.removeEventListener('mousemove', onMouseMove);
+                document.removeEventListener('mouseup', onMouseUp);
+              };
+              
+              document.addEventListener('mousemove', onMouseMove);
+              document.addEventListener('mouseup', onMouseUp);
+            });
+          });
+        });
+      }
+
+      enableColumnResizing();
 
       console.log('TA Bill Form loaded. Use Ctrl+P to print.');
     })();
