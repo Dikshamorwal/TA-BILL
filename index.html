@@ -286,6 +286,20 @@
       background: rgba(0, 0, 0, 0.25);
     }
 
+    /* Date and Datetime input styling */
+    input[type="date"],
+    input[type="datetime-local"] {
+      border: none;
+      background: transparent;
+      font-family: inherit;
+      font-size: 8.5pt;
+      padding: 1px 2px;
+      width: 100%;
+      height: 100%;
+      outline: none;
+      box-sizing: border-box;
+    }
+
     @media print {
       body {
         background: #fff;
@@ -313,6 +327,11 @@
       #action-buttons,
       .no-print {
         display: none !important;
+      }
+      input[type="date"]::-webkit-calendar-picker-indicator,
+      input[type="datetime-local"]::-webkit-calendar-picker-indicator {
+        display: none !important;
+        -webkit-appearance: none;
       }
     }
   </style>
@@ -397,9 +416,9 @@
       <tbody id="journeyBody">
         <tr>
           <td class="row-sno">1</td>
-          <td><input type="text" name="dep_time_1"></td>
+          <td><input type="datetime-local" name="dep_time_1"></td>
           <td><input type="text" name="dep_from_1"></td>
-          <td><input type="text" name="arr_time_1"></td>
+          <td><input type="datetime-local" name="arr_time_1"></td>
           <td><input type="text" name="arr_to_1"></td>
           <td><input type="text" name="mode_1"></td>
           <td><input type="text" name="fare_1"></td>
@@ -409,9 +428,9 @@
         </tr>
         <tr>
           <td class="row-sno">2</td>
-          <td><input type="text" name="dep_time_2"></td>
+          <td><input type="datetime-local" name="dep_time_2"></td>
           <td><input type="text" name="dep_from_2"></td>
-          <td><input type="text" name="arr_time_2"></td>
+          <td><input type="datetime-local" name="arr_time_2"></td>
           <td><input type="text" name="arr_to_2"></td>
           <td><input type="text" name="mode_2"></td>
           <td><input type="text" name="fare_2"></td>
@@ -421,9 +440,9 @@
         </tr>
         <tr>
           <td class="row-sno">3</td>
-          <td><input type="text" name="dep_time_3"></td>
+          <td><input type="datetime-local" name="dep_time_3"></td>
           <td><input type="text" name="dep_from_3"></td>
-          <td><input type="text" name="arr_time_3"></td>
+          <td><input type="datetime-local" name="arr_time_3"></td>
           <td><input type="text" name="arr_to_3"></td>
           <td><input type="text" name="mode_3"></td>
           <td><input type="text" name="fare_3"></td>
@@ -433,9 +452,9 @@
         </tr>
         <tr>
           <td class="row-sno">4</td>
-          <td><input type="text" name="dep_time_4"></td>
+          <td><input type="datetime-local" name="dep_time_4"></td>
           <td><input type="text" name="dep_from_4"></td>
-          <td><input type="text" name="arr_time_4"></td>
+          <td><input type="datetime-local" name="arr_time_4"></td>
           <td><input type="text" name="arr_to_4"></td>
           <td><input type="text" name="mode_4"></td>
           <td><input type="text" name="fare_4"></td>
@@ -445,9 +464,9 @@
         </tr>
         <tr>
           <td class="row-sno">5</td>
-          <td><input type="text" name="dep_time_5"></td>
+          <td><input type="datetime-local" name="dep_time_5"></td>
           <td><input type="text" name="dep_from_5"></td>
-          <td><input type="text" name="arr_time_5"></td>
+          <td><input type="datetime-local" name="arr_time_5"></td>
           <td><input type="text" name="arr_to_5"></td>
           <td><input type="text" name="mode_5"></td>
           <td><input type="text" name="fare_5"></td>
@@ -457,9 +476,9 @@
         </tr>
         <tr>
           <td class="row-sno">6</td>
-          <td><input type="text" name="dep_time_6"></td>
+          <td><input type="datetime-local" name="dep_time_6"></td>
           <td><input type="text" name="dep_from_6"></td>
-          <td><input type="text" name="arr_time_6"></td>
+          <td><input type="datetime-local" name="arr_time_6"></td>
           <td><input type="text" name="arr_to_6"></td>
           <td><input type="text" name="mode_6"></td>
           <td><input type="text" name="fare_6"></td>
@@ -620,21 +639,21 @@
       <tbody>
         <tr>
           <td>1</td>
-          <td><input type="text" name="hotel_from_1"> से/To <input type="text" name="hotel_to_1"></td>
+          <td><input type="date" name="hotel_from_1"> से/To <input type="date" name="hotel_to_1"></td>
           <td><input type="text" name="hotel_name_1"></td>
           <td><input type="text" name="hotel_rate_1"></td>
           <td><input type="text" name="hotel_total_1"></td>
         </tr>
         <tr>
           <td>2</td>
-          <td><input type="text" name="hotel_from_2"> से/To <input type="text" name="hotel_to_2"></td>
+          <td><input type="date" name="hotel_from_2"> से/To <input type="date" name="hotel_to_2"></td>
           <td><input type="text" name="hotel_name_2"></td>
           <td><input type="text" name="hotel_rate_2"></td>
           <td><input type="text" name="hotel_total_2"></td>
         </tr>
         <tr>
           <td>3</td>
-          <td><input type="text" name="hotel_from_3"> से/To <input type="text" name="hotel_to_3"></td>
+          <td><input type="date" name="hotel_from_3"> से/To <input type="date" name="hotel_to_3"></td>
           <td><input type="text" name="hotel_name_3"></td>
           <td><input type="text" name="hotel_rate_3"></td>
           <td><input type="text" name="hotel_total_3"></td>
@@ -672,7 +691,7 @@
       <tbody>
         <tr>
           <td>1</td>
-          <td><input type="text" name="high_class_date_1"></td>
+          <td><input type="date" name="high_class_date_1"></td>
           <td><input type="text" name="high_class_mode_1"></td>
           <td><input type="text" name="high_class_entitled_1"></td>
           <td><input type="text" name="high_class_travelled_1"></td>
@@ -680,7 +699,7 @@
         </tr>
         <tr>
           <td>2</td>
-          <td><input type="text" name="high_class_date_2"></td>
+          <td><input type="date" name="high_class_date_2"></td>
           <td><input type="text" name="high_class_mode_2"></td>
           <td><input type="text" name="high_class_entitled_2"></td>
           <td><input type="text" name="high_class_travelled_2"></td>
@@ -688,7 +707,7 @@
         </tr>
         <tr>
           <td>3</td>
-          <td><input type="text" name="high_class_date_3"></td>
+          <td><input type="date" name="high_class_date_3"></td>
           <td><input type="text" name="high_class_mode_3"></td>
           <td><input type="text" name="high_class_entitled_3"></td>
           <td><input type="text" name="high_class_travelled_3"></td>
@@ -725,21 +744,21 @@
       <tbody>
         <tr>
           <td>1</td>
-          <td><input type="text" name="road_date_1"></td>
+          <td><input type="date" name="road_date_1"></td>
           <td><input type="text" name="road_from_1"></td>
           <td><input type="text" name="road_to_1"></td>
           <td><input type="text" name="road_fare_1"></td>
         </tr>
         <tr>
           <td>2</td>
-          <td><input type="text" name="road_date_2"></td>
+          <td><input type="date" name="road_date_2"></td>
           <td><input type="text" name="road_from_2"></td>
           <td><input type="text" name="road_to_2"></td>
           <td><input type="text" name="road_fare_2"></td>
         </tr>
         <tr>
           <td>3</td>
-          <td><input type="text" name="road_date_3"></td>
+          <td><input type="date" name="road_date_3"></td>
           <td><input type="text" name="road_from_3"></td>
           <td><input type="text" name="road_to_3"></td>
           <td><input type="text" name="road_fare_3"></td>
@@ -761,7 +780,7 @@
     <table class="signature-table">
       <tr>
         <td class="field-label">दिनांक / Date :</td>
-        <td class="field-input"><input type="text" name="cert_date"></td>
+        <td class="field-input"><input type="date" name="cert_date"></td>
         <td></td>
       </tr>
       <tr>
@@ -880,7 +899,7 @@
           <div class="field-label">आहरण और वितरण अधिकारी के हस्ताक्षर</div>
           <div class="field-label-sm-en">Signature of Drawing & Disbursing Officer</div>
           <div class="field-input"><input type="text" name="ddo_signature"></div>
-          <div class="field-label-sm">दिनांक/Date : <input type="text" name="ddo_date"></div>
+          <div class="field-label-sm">दिनांक/Date : <input type="date" name="ddo_date"></div>
         </td>
       </tr>
       <tr>
@@ -889,7 +908,7 @@
           <div class="field-label">नियंत्रण अधिकारी के हस्ताक्षर</div>
           <div class="field-label-sm-en">Signature of the Controlling Officer</div>
           <div class="field-input"><input type="text" name="controlling_officer_signature"></div>
-          <div class="field-label-sm">दिनांक/Date : <input type="text" name="co_date"></div>
+          <div class="field-label-sm">दिनांक/Date : <input type="date" name="co_date"></div>
           <div class="field-label-sm">पदनाम/Designation : <input type="text" name="co_designation"></div>
         </td>
       </tr>
@@ -964,18 +983,18 @@
           'pay': '56100',
           'level': '7',
           'headquarters': 'दिल्ली / Delhi',
-          'dep_time_1': '01/07/2026 08:00',
+          'dep_time_1': '2026-07-01T08:00',
           'dep_from_1': 'दिल्ली / Delhi',
-          'arr_time_1': '01/07/2026 14:00',
+          'arr_time_1': '2026-07-01T14:00',
           'arr_to_1': 'लखनऊ / Lucknow',
           'mode_1': 'रेल/एसी 3-टियर / Rail/AC 3-Tier',
           'fare_1': '1250.00',
           'km_1': '550',
           'halt_1': '2 दिन / Days',
           'purpose_1': 'निरीक्षण / Inspection',
-          'dep_time_2': '03/07/2026 16:00',
+          'dep_time_2': '2026-07-03T16:00',
           'dep_from_2': 'लखनऊ / Lucknow',
-          'arr_time_2': '03/07/2026 22:00',
+          'arr_time_2': '2026-07-03T22:00',
           'arr_to_2': 'दिल्ली / Delhi',
           'mode_2': 'रेल/एसी 3-टियर / Rail/AC 3-Tier',
           'fare_2': '1250.00',
