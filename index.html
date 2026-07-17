@@ -286,8 +286,9 @@
       background: rgba(0, 0, 0, 0.25);
     }
 
-    /* Date and Datetime input styling */
+    /* Date, Time and Datetime input styling */
     input[type="date"],
+    input[type="time"],
     input[type="datetime-local"] {
       border: none;
       background: transparent;
@@ -295,9 +296,10 @@
       font-size: 8.5pt;
       padding: 1px 2px;
       width: 100%;
-      height: 100%;
+      height: 20px;
       outline: none;
       box-sizing: border-box;
+      display: block;
     }
 
     @media print {
@@ -329,6 +331,7 @@
         display: none !important;
       }
       input[type="date"]::-webkit-calendar-picker-indicator,
+      input[type="time"]::-webkit-calendar-picker-indicator,
       input[type="datetime-local"]::-webkit-calendar-picker-indicator {
         display: none !important;
         -webkit-appearance: none;
@@ -416,9 +419,15 @@
       <tbody id="journeyBody">
         <tr>
           <td class="row-sno">1</td>
-          <td><input type="datetime-local" name="dep_time_1"></td>
+          <td>
+            <input type="date" name="dep_date_1">
+            <input type="time" name="dep_time_1">
+          </td>
           <td><input type="text" name="dep_from_1"></td>
-          <td><input type="datetime-local" name="arr_time_1"></td>
+          <td>
+            <input type="date" name="arr_date_1">
+            <input type="time" name="arr_time_1">
+          </td>
           <td><input type="text" name="arr_to_1"></td>
           <td><input type="text" name="mode_1"></td>
           <td><input type="text" name="fare_1"></td>
@@ -428,9 +437,15 @@
         </tr>
         <tr>
           <td class="row-sno">2</td>
-          <td><input type="datetime-local" name="dep_time_2"></td>
+          <td>
+            <input type="date" name="dep_date_2">
+            <input type="time" name="dep_time_2">
+          </td>
           <td><input type="text" name="dep_from_2"></td>
-          <td><input type="datetime-local" name="arr_time_2"></td>
+          <td>
+            <input type="date" name="arr_date_2">
+            <input type="time" name="arr_time_2">
+          </td>
           <td><input type="text" name="arr_to_2"></td>
           <td><input type="text" name="mode_2"></td>
           <td><input type="text" name="fare_2"></td>
@@ -440,9 +455,15 @@
         </tr>
         <tr>
           <td class="row-sno">3</td>
-          <td><input type="datetime-local" name="dep_time_3"></td>
+          <td>
+            <input type="date" name="dep_date_3">
+            <input type="time" name="dep_time_3">
+          </td>
           <td><input type="text" name="dep_from_3"></td>
-          <td><input type="datetime-local" name="arr_time_3"></td>
+          <td>
+            <input type="date" name="arr_date_3">
+            <input type="time" name="arr_time_3">
+          </td>
           <td><input type="text" name="arr_to_3"></td>
           <td><input type="text" name="mode_3"></td>
           <td><input type="text" name="fare_3"></td>
@@ -452,9 +473,15 @@
         </tr>
         <tr>
           <td class="row-sno">4</td>
-          <td><input type="datetime-local" name="dep_time_4"></td>
+          <td>
+            <input type="date" name="dep_date_4">
+            <input type="time" name="dep_time_4">
+          </td>
           <td><input type="text" name="dep_from_4"></td>
-          <td><input type="datetime-local" name="arr_time_4"></td>
+          <td>
+            <input type="date" name="arr_date_4">
+            <input type="time" name="arr_time_4">
+          </td>
           <td><input type="text" name="arr_to_4"></td>
           <td><input type="text" name="mode_4"></td>
           <td><input type="text" name="fare_4"></td>
@@ -464,9 +491,15 @@
         </tr>
         <tr>
           <td class="row-sno">5</td>
-          <td><input type="datetime-local" name="dep_time_5"></td>
+          <td>
+            <input type="date" name="dep_date_5">
+            <input type="time" name="dep_time_5">
+          </td>
           <td><input type="text" name="dep_from_5"></td>
-          <td><input type="datetime-local" name="arr_time_5"></td>
+          <td>
+            <input type="date" name="arr_date_5">
+            <input type="time" name="arr_time_5">
+          </td>
           <td><input type="text" name="arr_to_5"></td>
           <td><input type="text" name="mode_5"></td>
           <td><input type="text" name="fare_5"></td>
@@ -476,9 +509,15 @@
         </tr>
         <tr>
           <td class="row-sno">6</td>
-          <td><input type="datetime-local" name="dep_time_6"></td>
+          <td>
+            <input type="date" name="dep_date_6">
+            <input type="time" name="dep_time_6">
+          </td>
           <td><input type="text" name="dep_from_6"></td>
-          <td><input type="datetime-local" name="arr_time_6"></td>
+          <td>
+            <input type="date" name="arr_date_6">
+            <input type="time" name="arr_time_6">
+          </td>
           <td><input type="text" name="arr_to_6"></td>
           <td><input type="text" name="mode_6"></td>
           <td><input type="text" name="fare_6"></td>
@@ -983,18 +1022,22 @@
           'pay': '56100',
           'level': '7',
           'headquarters': 'दिल्ली / Delhi',
-          'dep_time_1': '2026-07-01T08:00',
+          'dep_date_1': '2026-07-01',
+          'dep_time_1': '08:00',
           'dep_from_1': 'दिल्ली / Delhi',
-          'arr_time_1': '2026-07-01T14:00',
+          'arr_date_1': '2026-07-01',
+          'arr_time_1': '14:00',
           'arr_to_1': 'लखनऊ / Lucknow',
           'mode_1': 'रेल/एसी 3-टियर / Rail/AC 3-Tier',
           'fare_1': '1250.00',
           'km_1': '550',
           'halt_1': '2 दिन / Days',
           'purpose_1': 'निरीक्षण / Inspection',
-          'dep_time_2': '2026-07-03T16:00',
+          'dep_date_2': '2026-07-03',
+          'dep_time_2': '16:00',
           'dep_from_2': 'लखनऊ / Lucknow',
-          'arr_time_2': '2026-07-03T22:00',
+          'arr_date_2': '2026-07-03',
+          'arr_time_2': '22:00',
           'arr_to_2': 'दिल्ली / Delhi',
           'mode_2': 'रेल/एसी 3-टियर / Rail/AC 3-Tier',
           'fare_2': '1250.00',
