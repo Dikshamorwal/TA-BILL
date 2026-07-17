@@ -1008,7 +1008,7 @@
 
       // Convert table inputs to auto-resizing textareas dynamically on page load
       function convertTableInputsToTextareas() {
-        var inputs = document.querySelectorAll('table.data-table td input[type="text"]');
+        var inputs = document.querySelectorAll('table.data-table td input[type="text"]:not(.datepicker)');
         for (var i = 0; i < inputs.length; i++) {
           (function() {
             var input = inputs[i];
