@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="hi" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Travelling Allowance Bill for Tour / दौरे के लिए यात्रा भत्ता बिल</title>
+  
+  <!-- Modern Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app-layout">
+
+  <!-- ==========================================
+       SIDEBAR NAVIGATION
+       ========================================== -->
+  <aside class="sidebar no-print">
+    <div class="sidebar-brand">
+      <h2>TA Bill for Tour</h2>
+      <span>यात्रा भत्ता बिल (दौरा)</span>
+    </div>
+    
+    <ul class="nav-steps">
+      <li class="nav-item active" onclick="switchStep(0)">
+        <span class="step-num">Page 1 / पृष्ठ १</span>
+        <span class="step-title-hi">व्यक्तिगत व यात्रा विवरण</span>
+        <span>Personal & Journey</span>
+      </li>
+      <li class="nav-item" onclick="switchStep(1)">
+        <span class="step-num">Page 2 / पृष्ठ २</span>
+        <span class="step-title-hi">वाहन, अनुपस्थिति व ठहरना</span>
+        <span>Conveyance & Stay</span>
+      </li>
+      <li class="nav-item" onclick="switchStep(2)">
+        <span class="step-num">Page 3 / पृष्ठ ३</span>
+        <span class="step-title-hi">विशेष यात्रा व घोषणा</span>
+        <span>Accommodation & Cert</span>
+      </li>
+      <li class="nav-item" onclick="switchStep(3)">
+        <span class="step-num">Page 4 / पृष्ठ ४</span>
+        <span class="step-title-hi">बिल अनुभाग (कार्यालय)</span>
+        <span>Bill Section (Part B)</span>
+      </li>
+    </ul>
+
+    <div class="sidebar-footer">
+      <div class="theme-toggle" onclick="toggleTheme()">
+        <span>🌙 Dark Mode / डार्क मोड</span>
+        <input type="checkbox" id="themeCheckbox" style="display:none;">
+      </div>
+      <div style="font-size: 0.7rem; color: var(--text-muted); text-align: center;">
+        Form GFR 22-A (Revised)<br>Government of India
+      </div>
+    </div>
+  </aside>
+
+  <!-- ==========================================
+       MAIN CONTENT CONTAINER
+       ========================================== -->
+  <main class="main-content">
+    
+    <!-- Action Bar (Screen Only) -->
+    <div class="top-actions no-print">
+      <div class="action-group">
+        <button class="btn btn-success" onclick="saveDraft()">💾 Save Draft / ड्राफ्ट सुरक्षित करें</button>
+        <button class="btn" onclick="loadDraft()">📂 Load Draft / ड्राफ्ट लोड करें</button>
+      </div>
+      <div class="action-group">
+        <button class="btn btn-primary" onclick="window.print()">🖨️ Print / Export PDF</button>
+        <button class="btn btn-danger" onclick="clearForm()">🧹 Clear / साफ करें</button>
+      </div>
+    </div>
+
+    <!-- ==========================================================================
+         PAGE 1: PART A (PERSONAL & JOURNEY DETAILS)
+         ========================================================================== -->
+    <section class="form-card active" id="step0">
+      <div class="form-section-header">
+        <div class="sub-bill-input-wrap">
+          <label>उप बिल / Sub-bill No.</label>
+          <input type="text" id="subBillNo" placeholder="...............">
+        </div>
+        <h3>
+          <span class="hi">दौरे के लिए यात्रा भत्ता बिल</span>
+          TRAVELLING ALLOWANCE BILL FOR TOUR
+        </h3>
+        <p style="font-size: 0.8rem; font-style: italic; text-align: center; color: var(--text-muted); margin-top: 4px;" class="no-print">
+          (टिप्पणी- इस बिल को दो प्रतियों में, एक भुगतान के लिए दूसरी कार्यालय प्रति के रूप में तैयार किया जाना चाहिए)<br>
+          (Note – This bill should be prepared in duplicate – one for payment and the other as office copy)
+        </p>
+        <h4 style="text-align: center; margin-top: 12px; font-weight: bold; border-top: 1px solid var(--border); padding-top: 8px;">
+          <span class="inline-hi">भाग - क (पदाधिकारी द्वारा भरा जाना है)</span> / Part- A (To be filled in by the Government Officials)
+        </h4>
+      </div>
+
+      <!-- Section 1-4: Employee Profile -->
+      <div class="fields-grid">
+        <div class="form-group">
+          <label><span class="hi">१. नाम</span> 1. Name</label>
+          <input type="text" id="empName" class="form-control" placeholder="नाम दर्ज करें...">
+        </div>
+        <div class="form-group">
+          <label><span class="hi">२. पदनाम</span> 2. Designation</label>
+          <input type="text" id="empDesignation" class="form-control" placeholder="पदनाम दर्ज करें...">
+        </div>
+        <div class="form-group">
+          <label><span class="hi">३. वेतन</span> 3. Pay (Basic Pay Rs.)</label>
+          <input type="number" id="empPay" class="form-control" placeholder="वेतन दर्ज करें..." min="0">
+        </div>
+        <div class="form-group">
+          <label><span class="hi">४. मुख्यालय/केन्द्र</span> 4. Headquarters/Centres</label>
+          <input type="text" id="empHQ" class="form-control" placeholder="मुख्यालय दर्ज करें...">
+        </div>
+      </div>
+
+      <!-- Section 5: Journey Table -->
+      <div style="margin-bottom: 12px; font-weight: bold;">
+        <span class="inline-hi">५. की गई यात्रा/यात्राओं के ब्यौरे और प्रयोजन</span> / 
+        5. Details and purpose of journey(s) performed &ndash;
+      </div>
+
+      <div class="table-container">
+        <table class="custom-table" id="journeyTable">
+          <thead>
+            <tr>
+              <th rowspan="2" class="col-sno">S.No<br><span class="hi">क्र.सं.</span></th>
+              <th colspan="2"><span class="hi">प्रस्थान / Departure</span></th>
+              <th colspan="2"><span class="hi">आगमन / Arrival</span></th>
+              <th rowspan="2" style="width: 18%;"><span class="hi">यात्रा की रीति और सुविधा का वर्ग</span><span>Mode & class of accommodation</span></th>
+              <th rowspan="2" style="width: 14%;"><span class="hi">भुगतान भाड़ा (रु.)</span><span>Fare paid (Rs.)</span></th>
+              <th rowspan="2" style="width: 10%;"><span class="hi">सड़क दूरी (कि.मी.)</span><span>Road Dist. (Kms)</span></th>
+              <th rowspan="2" style="width: 10%;"><span class="hi">विश्राम (दिन)</span><span>Halt (Days)</span></th>
+              <th rowspan="2" style="width: 16%;"><span class="hi">यात्रा का उद्देश्य</span><span>Purpose of Journey</span></th>
+              <th rowspan="2" class="col-action no-print">Act</th>
+            </tr>
+            <tr>
+              <th><span class="hi">तारीख/समय</span><span>Date & Time</span></th>
+              <th><span class="hi">से</span><span>From</span></th>
+              <th><span class="hi">तारीख/समय</span><span>Date & Time</span></th>
+              <th><span class="hi">तक</span><span>To</span></th>
+            </tr>
+            <tr class="no-print" style="font-size: 0.75rem; background: var(--background); text-align: center;">
+              <td>-</td>
+              <td>(1)</td>
+              <td>(2)</td>
+              <td>(3)</td>
+              <td>(4)</td>
+              <td>(5)</td>
+              <td>(6)</td>
+              <td>(7)</td>
+              <td>(8)</td>
+              <td>(9)</td>
+              <td>-</td>
+            </tr>
+          </thead>
+          <tbody id="journeyBody">
+            <!-- Dynamic rows will be loaded by JS -->
+          </tbody>
+        </table>
+      </div>
+
+      <div class="no-print" style="margin-bottom: 24px;">
+        <button class="btn btn-small btn-primary" onclick="addJourneyRow()">➕ Add Row / रो जोड़ें</button>
+      </div>
+
+      <!-- Section 6: Mode of Conveyance Questions (Part I - Air) -->
+      <div class="form-subsection">
+        <h4 class="form-subsection-title">
+          <span class="hi">६. यात्रा की रीति / Mode of journey &ndash;</span>
+        </h4>
+        
+        <div style="font-weight: bold; margin-bottom: 8px;">(I) <span class="inline-hi">वायुयान / Air</span></div>
+        <div class="fields-grid" style="grid-template-columns: 1.5fr 1fr; gap: 16px;">
+          <div class="form-group">
+            <label>
+              <span class="hi">(क) क्या कार्यालय द्वारा व्यवस्थाकृत विनिमय वाउचर से यात्रा की गई?</span>
+              (a) Whether travelled by exchange voucher arranged by office?
+            </label>
+            <select id="airExchangeVoucher" class="form-control">
+              <option value="No">नहीं / No</option>
+              <option value="Yes">हाँ / Yes</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>
+              <span class="hi">(ख) टिकट/विनिमय वाउचर किसके द्वारा व्यवस्थाकृत किया गया?</span>
+              (b) Ticket/Exchange voucher arranged by:
+            </label>
+            <input type="text" id="airArrangedBy" class="form-control" placeholder="व्यवस्थापक...">
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Step Navigation -->
+      <div class="step-actions no-print">
+        <span></span>
+        <button class="btn btn-primary" onclick="switchStep(1)">Next Page / अगला पृष्ठ 👉</button>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         PAGE 2: PART A (CONVEYANCE, HALTS & HOTELS)
+         ========================================================================== -->
+    <section class="form-card" id="step1">
+      <div class="form-section-header">
+        <h3>
+          <span class="hi">दौरे के लिए यात्रा भत्ता बिल (जारी)</span>
+          TRAVELLING ALLOWANCE BILL FOR TOUR (Contd.)
+        </h3>
+      </div>
+
+      <!-- Section 6 (Contd): Rail & Road -->
+      <div class="form-subsection">
+        <h4 class="form-subsection-title">
+          <span class="hi">६. यात्रा की रीति (जारी) / Mode of journey (Contd.)</span>
+        </h4>
+
+        <!-- Rail -->
+        <div style="font-weight: bold; margin-top: 12px; margin-bottom: 8px;">(II) <span class="inline-hi">रेल / Rail</span></div>
+        <div class="fields-grid" style="grid-template-columns: 1fr; gap: 12px;">
+          <div class="form-group">
+            <label>
+              <span class="hi">(क) क्या यात्रा मेल/एक्सप्रेस/पैसेंजर गाड़ी से की गई?</span>
+              (a) Whether travelled by mail/express/ordinary train?
+            </label>
+            <select id="railTrainType" class="form-control">
+              <option value="Mail/Express">मेल/एक्सप्रेस / Mail/Express</option>
+              <option value="Ordinary">पैसेंजर (साधारण) / Ordinary</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label>
+              <span class="hi">(ख) क्या वापसी टिकट उपलब्ध था ?</span>
+              (b) Whether return ticket available?
+            </label>
+            <select id="railReturnTicketAvail" class="form-control">
+              <option value="No">नहीं / No</option>
+              <option value="Yes">हाँ / Yes</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>
+              <span class="hi">(ग) यदि उपलब्ध था तो क्या वापसी टिकट खरीदा गया, यदि नहीं तो कारण बताएं</span>
+              (c) If available, whether return tickets purchased; if not, state reasons:
+            </label>
+            <input type="text" id="railReturnTicketReason" class="form-control" placeholder="कारण (यदि लागू हो)...">
+          </div>
+        </div>
+
+        <!-- Road -->
+        <div style="font-weight: bold; margin-top: 20px; margin-bottom: 8px;">(III) <span class="inline-hi">सड़क / Road</span></div>
+        <div class="form-group">
+          <label>
+            <span class="hi">उपयोग में लाए गए वाहन का विवरण (सरकारी परिवहन/टैक्सी/बस/कार शेयरिंग आदि का उल्लेख करें)</span>
+            Detail type of conveyance used (Government transport, taxi, single seat in bus, car sharing, etc.):
+          </label>
+          <textarea id="roadConveyanceDetails" class="form-control" placeholder="वाहन के प्रकार का ब्यौरा दें..."></textarea>
+        </div>
+      </div>
+
+      <!-- Section 7: Absences -->
+      <div class="form-subsection">
+        <h4 class="form-subsection-title">
+          <span class="hi">७. विराम स्थल से निम्नलिखित कारण से अनुपस्थित रहने की तारीख</span>
+          7. Date of absence from place of halt on account of &ndash;
+        </h4>
+        <div class="fields-grid">
+          <div class="form-group">
+            <label>
+              <span class="hi">(क) प्रतिबंधित अवकाश तथा आकस्मिक अवकाश</span>
+              (a) Restricted holidays and Casual Leave
+            </label>
+            <input type="text" id="absenceCL" class="form-control" placeholder="तारीखें...">
+          </div>
+          <div class="form-group">
+            <label>
+              <span class="hi">(ख) रविवार और अवकाश के दिनों में</span>
+              (b) In case of Sundays and Holidays
+            </label>
+            <input type="text" id="absenceHolidays" class="form-control" placeholder="तारीखें...">
+          </div>
+        </div>
+      </div>
+
+      <!-- Section 8: Free Board & Lodging -->
+      <div class="form-subsection">
+        <h4 class="form-subsection-title">
+          <span class="hi">८. वे तारीखें जिनको मुफ्त भोजन और/या आवास उपलब्ध कराया गया</span>
+          8. Date on which free board and/or lodging provided by the State or any organization financed by State funds &ndash;
+        </h4>
+        <div class="fields-grid" style="grid-template-columns: repeat(3, 1fr);">
+          <div class="form-group">
+            <label><span class="hi">(क) केवल भोजन</span> (a) Board only</label>
+            <input type="text" id="freeBoardDates" class="form-control" placeholder="तारीखें...">
+          </div>
+          <div class="form-group">
+            <label><span class="hi">(ख) केवल आवास</span> (b) Lodging only</label>
+            <input type="text" id="freeLodgingDates" class="form-control" placeholder="तारीखें...">
+          </div>
+          <div class="form-group">
+            <label><span class="hi">(ग) भोजन और आवास</span> (c) Boarding & lodging</label>
+            <input type="text" id="freeBoardLodgingDates" class="form-control" placeholder="तारीखें...">
+          </div>
+        </div>
+      </div>
+
+      <!-- Section 9: Hotel stay details -->
+      <div class="form-subsection">
+        <h4 class="form-subsection-title">
+          <span class="hi">९. होटलों/डाक बंगलों में ठहरने की विशिष्टियाँ (जहाँ अनुसूचित दर से अधिक दर का दावा किया गया हो)</span>
+          9. Particulars of stay in hotels/establishments providing board and lodging at tariffs higher than normal daily allowance &ndash;
+        </h4>
+        
+        <div class="table-container">
+          <table class="custom-table" id="hotelTable">
+            <thead>
+              <tr>
+                <th colspan="2"><span class="hi">ठहरने की अवधि / Period of stay</span></th>
+                <th rowspan="2"><span class="hi">होटल/डाक बंगले का नाम</span><span>Name of the Hotel</span></th>
+                <th rowspan="2" style="width: 22%;"><span class="hi">आवास की दैनिक दरें</span><span>Daily rate of lodging charged</span></th>
+                <th rowspan="2" style="width: 22%;"><span class="hi">भुगतान की गई कुल राशि (रू.)</span><span>Total amount paid (Rs.)</span></th>
+                <th rowspan="2" class="col-action no-print">Act</th>
+              </tr>
+              <tr>
+                <th style="width: 18%;"><span class="hi">से / From</span></th>
+                <th style="width: 18%;"><span class="hi">तक / To</span></th>
+              </tr>
+            </thead>
+            <tbody id="hotelBody">
+              <!-- Dynamic rows loaded by JS -->
+            </tbody>
+          </table>
+        </div>
+        <div class="no-print">
+          <button class="btn btn-small btn-primary" onclick="addHotelRow()">➕ Add Hotel Stay / होटल ठहरना जोड़ें</button>
+        </div>
+      </div>
+
+      <!-- Bottom Step Navigation -->
+      <div class="step-actions no-print">
+        <button class="btn" onclick="switchStep(0)">👈 Previous Page / पिछला पृष्ठ</button>
+        <button class="btn btn-primary" onclick="switchStep(2)">Next Page / अगला पृष्ठ 👉</button>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         PAGE 3: PART A (SPECIAL ACCOMMODATION, ROAD LAID, ADVANCES, DECLARATION)
+         ========================================================================== -->
+    <section class="form-card" id="step2">
+      <div class="form-section-header">
+        <h3>
+          <span class="hi">दौरे के लिए यात्रा भत्ता बिल (जारी)</span>
+          TRAVELLING ALLOWANCE BILL FOR TOUR (Contd.)
+        </h3>
+      </div>
+
+      <!-- Section 10: Higher Class of Accommodation -->
+      <div class="form-subsection">
+        <h4 class="form-subsection-title">
+          <span class="hi">१०. उच्चत्तर श्रेणी के उपयोग की विशिष्टियाँ (जिसके लिए पात्रता नहीं थी)</span>
+          10. Particulars of journeys performed by higher class of accommodation than the entitled class &ndash;
+        </h4>
+
+        <div class="table-container">
+          <table class="custom-table" id="higherAccTable">
+            <thead>
+              <tr>
+                <th rowspan="2" style="width: 12%;"><span class="hi">दिनांक</span><span>Date</span></th>
+                <th colspan="2"><span class="hi">स्थानों का नाम / Name of Places</span></th>
+                <th rowspan="2"><span class="hi">वाहन का प्रकार</span><span>Mode of conveyance</span></th>
+                <th rowspan="2" style="width: 15%;"><span class="hi">हकदार श्रेणी</span><span>Class entitled</span></th>
+                <th rowspan="2" style="width: 15%;"><span class="hi">यात्रा की श्रेणी</span><span>Class travelled</span></th>
+                <th rowspan="2" style="width: 15%;"><span class="hi">हकदार श्रेणी का भाड़ा (रु.)</span><span>Fare entitled class</span></th>
+                <th rowspan="2" class="col-action no-print">Act</th>
+              </tr>
+              <tr>
+                <th style="width: 18%;"><span class="hi">से / From</span></th>
+                <th style="width: 18%;"><span class="hi">तक / To</span></th>
+              </tr>
+              <tr class="no-print" style="font-size: 0.75rem; background: var(--background); text-align: center;">
+                <td>(1)</td>
+                <td>(2)</td>
+                <td>(3)</td>
+                <td>(4)</td>
+                <td>(5)</td>
+                <td>(6)</td>
+                <td>(7)</td>
+                <td>-</td>
+              </tr>
+            </thead>
+            <tbody id="higherAccBody">
+              <!-- Dynamic rows loaded by JS -->
+            </tbody>
+          </table>
+        </div>
+        <div class="no-print" style="margin-bottom: 16px;">
+          <button class="btn btn-small btn-primary" onclick="addHigherAccRow()">➕ Add Higher Accommodation / रो जोड़ें</button>
+        </div>
+
+        <div class="form-group">
+          <label>
+            <span class="hi">यदि उच्च श्रेणी यात्रा सक्षम प्राधिकारी के अनुमोदन से की गई है तो मंजूरी की संख्या तथा तिथि का उल्लेख करें</span>
+            If journey by higher class was approved by competent authority, quote sanction number and date:
+          </label>
+          <input type="text" id="higherClassSanction" class="form-control" placeholder="उदा. मंजूरी संख्या और दिनांक...">
+        </div>
+      </div>
+
+      <!-- Section 11: Road journey between places connected by rail -->
+      <div class="form-subsection">
+        <h4 class="form-subsection-title">
+          <span class="hi">११. रेल से जुड़े स्थानों के बीच सड़क से की गई यात्राओं के ब्यौरे</span>
+          11. Details of journey(s) performed by road between places connected by rail &ndash;
+        </h4>
+
+        <div class="table-container">
+          <table class="custom-table" id="roadRailTable">
+            <thead>
+              <tr>
+                <th rowspan="2" style="width: 15%;"><span class="hi">दिनांक</span><span>Date</span></th>
+                <th colspan="2"><span class="hi">स्थानों का नाम / Name of Places</span></th>
+                <th rowspan="2" style="width: 25%;"><span class="hi">भुगतान किया गया किराया (रू.)</span><span>Fare paid (Rs.)</span></th>
+                <th rowspan="2" class="col-action no-print">Act</th>
+              </tr>
+              <tr>
+                <th><span class="hi">से / From</span></th>
+                <th><span class="hi">तक / To</span></th>
+              </tr>
+            </thead>
+            <tbody id="roadRailBody">
+              <!-- Dynamic rows loaded by JS -->
+            </tbody>
+          </table>
+        </div>
+        <div class="no-print">
+          <button class="btn btn-small btn-primary" onclick="addRoadRailRow()">➕ Add Road Journey / सड़क यात्रा जोड़ें</button>
+        </div>
+      </div>
+
+      <!-- Section 12: T.A. Advance & Employee Certification -->
+      <div class="fields-grid" style="margin-top: 24px;">
+        <div class="form-group full-width">
+          <label>
+            <span class="hi">१२. यात्रा भत्ता अग्रिम की ली गई राशि (यदि कोई हो)</span>
+            12. Amount of travelling allowance advance, if any drawn (Rs.):
+          </label>
+          <input type="number" id="empAdvanceDrawn" class="form-control" placeholder="यात्रा अग्रिम राशि (यदि ली हो)..." min="0" oninput="syncAdvance()">
+        </div>
+      </div>
+
+      <!-- Certificate Box -->
+      <div class="cert-box">
+        <p>
+          <strong>प्रमाणित किया जाता है कि</strong> उपरोक्त जानकारी मेरे सर्वोत्तम ज्ञान और विश्वास के अनुसार सही है ।<br>
+          <strong>Certified that</strong> the information as given above is true to the best of my knowledge and belief.
+        </p>
+      </div>
+
+      <div class="signatures-section">
+        <div class="signature-block">
+          <label><span class="hi">दिनांक</span> / Date</label><br><br>
+          <input type="date" id="certDate">
+        </div>
+        <div class="signature-block">
+          <label><span class="hi">पदाधिकारी के हस्ताक्षर</span> / Signature of the Government Servant</label><br><br>
+          <input type="text" id="certSign" placeholder="(हस्ताक्षर नाम)">
+        </div>
+      </div>
+
+      <!-- Bottom Step Navigation -->
+      <div class="step-actions no-print">
+        <button class="btn" onclick="switchStep(1)">👈 Previous Page / पिछला पृष्ठ</button>
+        <button class="btn btn-primary" onclick="switchStep(3)">Next Page / अगला पृष्ठ 👉</button>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         PAGE 4: PART B (BILL SECTION - OFFICE CALCS & SIGNS)
+         ========================================================================== -->
+    <section class="form-card" id="step3">
+      <div class="form-section-header">
+        <h3>
+          <span class="hi">भाग - ख (बिल अनुभाग में भरा जाना है)</span>
+          PART &ndash; B (To be filled in the Bill Section)
+        </h3>
+      </div>
+
+      <!-- Auto Calculate Checklist -->
+      <div class="calc-toggle-wrap no-print">
+        <input type="checkbox" id="autoCalculate" checked onchange="runCalculations()">
+        <label for="autoCalculate">
+          ⚡ Auto-Calculate & sync from Part A details<br>
+          <span style="font-size: 0.75rem; font-weight: normal; color: var(--text-muted);">
+            भाग-क में भरे गए विवरणों से बिल के जोड़ स्वतः प्राप्त करें
+          </span>
+        </label>
+      </div>
+
+      <!-- Math Table Form style -->
+      <div style="margin-bottom: 12px; font-weight: bold;">
+        <span class="inline-hi">१. यात्रा भत्ते पर कुल पात्रता निम्नलिखित विवरणों के अनुसार:</span> / 
+        1. The net entitlement in account of travelling allowance worked out to detailed below:
+      </div>
+
+      <div class="form-subsection" style="padding: 24px;">
+        
+        <!-- (A) Train/Air/Bus Fare -->
+        <div class="bill-row-grid">
+          <div class="bill-row-label">
+            <span class="hi">(क) रेल/वायुयान/बस/स्टीमर यात्री भाड़ा</span>
+            (a) Railways/Air/Bus/Steamer fare
+          </div>
+          <div></div>
+          <div></div>
+          <div class="form-group" style="margin-bottom: 0;">
+            <input type="number" id="partBFare" class="form-control" style="text-align: right;" placeholder="0.00" min="0" oninput="runCalculations()">
+          </div>
+        </div>
+
+        <!-- (B) Road Mileage -->
+        <div class="bill-row-grid">
+          <div class="bill-row-label">
+            <span class="hi">(ख) सड़क मार्ग किलोमीटर भत्ता</span>
+            (b) Road mileage allowance
+          </div>
+          <div class="form-group" style="margin-bottom: 0;">
+            <input type="number" id="partBRoadKms" class="form-control" style="text-align: right;" placeholder="Kms / कि.मी." min="0" oninput="runCalculations()">
+          </div>
+          <div class="form-group" style="margin-bottom: 0;">
+            <input type="number" id="partBRoadRate" class="form-control" style="text-align: right;" placeholder="Rate (Rs./Km)" min="0" step="0.01" oninput="runCalculations()">
+          </div>
+          <div class="form-group" style="margin-bottom: 0;">
+            <input type="number" id="partBRoadTotal" class="form-control" style="text-align: right;" placeholder="Total Rs." min="0" readonly>
+          </div>
+        </div>
+
+        <!-- (C) Daily Allowance -->
+        <div class="bill-row-grid" style="border-bottom: none; padding-bottom: 0;">
+          <div class="bill-row-label">
+            <span class="hi">(ग) दैनिक भत्ता / (c) Daily allowance:</span>
+          </div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+
+        <!-- DA Row 1 -->
+        <div class="bill-row-grid" style="padding-left: 20px;">
+          <div class="bill-row-label">
+            <span class="hi">१. दैनिक भत्ता दर - १</span>
+            1. Daily allowance rate - 1
+          </div>
+          <div class="form-group" style="margin-bottom: 0;">
+            <input type="number" id="partBDays1" class="form-control" style="text-align: right;" placeholder="Days / दिन" min="0" oninput="runCalculations()">
+          </div>
+          <div class="form-group" style="margin-bottom: 0;">
+            <input type="number" id="partBRate1" class="form-control" style="text-align: right;" placeholder="Rate (Rs./Day)" min="0" step="0.01" oninput="runCalculations()">
+          </div>
+          <div class="form-group" style="margin-bottom: 0;">
+            <input type="number" id="partDAAmount1" class="form-control" style="text-align: right;" placeholder="Total Rs." min="0" readonly>
+          </div>
+        </div>
+
+        <!-- DA Row 2 -->
+        <div class="bill-row-grid" style="padding-left: 20px;">
+          <div class="bill-row-label">
+            <span class="hi">२. दैनिक भत्ता दर - २</span>
+            2. Daily allowance rate - 2
+          </div>
+          <div class="form-group" style="margin-bottom: 0;">
+            <input type="number" id="partBDays2" class="form-control" style="text-align: right;" placeholder="Days / दिन" min="0" oninput="runCalculations()">
+          </div>
+          <div class="form-group" style="margin-bottom: 0;">
+            <input type="number" id="partBRate2" class="form-control" style="text-align: right;" placeholder="Rate (Rs./Day)" min="0" step="0.01" oninput="runCalculations()">
+          </div>
+          <div class="form-group" style="margin-bottom: 0;">
+            <input type="number" id="partDAAmount2" class="form-control" style="text-align: right;" placeholder="Total Rs." min="0" readonly>
+          </div>
+        </div>
+
+        <!-- DA Row 3 -->
+        <div class="bill-row-grid" style="padding-left: 20px;">
+          <div class="bill-row-label">
+            <span class="hi">३. दैनिक भत्ता दर - ३</span>
+            3. Daily allowance rate - 3
+          </div>
+          <div class="form-group" style="margin-bottom: 0;">
+            <input type="number" id="partBDays3" class="form-control" style="text-align: right;" placeholder="Days / दिन" min="0" oninput="runCalculations()">
+          </div>
+          <div class="form-group" style="margin-bottom: 0;">
+            <input type="number" id="partBRate3" class="form-control" style="text-align: right;" placeholder="Rate (Rs./Day)" min="0" step="0.01" oninput="runCalculations()">
+          </div>
+          <div class="form-group" style="margin-bottom: 0;">
+            <input type="number" id="partDAAmount3" class="form-control" style="text-align: right;" placeholder="Total Rs." min="0" readonly>
+          </div>
+        </div>
+
+        <!-- Actual Expenses -->
+        <div class="bill-row-grid">
+          <div class="bill-row-label">
+            <span class="hi">वास्तविक व्यय / Actual expenses</span>
+          </div>
+          <div></div>
+          <div></div>
+          <div class="form-group" style="margin-bottom: 0;">
+            <input type="number" id="partBActualExpenses" class="form-control" style="text-align: right;" placeholder="Actual Expenses" min="0" oninput="runCalculations()">
+          </div>
+        </div>
+
+        <!-- Gross Amount -->
+        <div class="bill-row-grid" style="border-bottom: 2px solid var(--border); font-weight: bold; background: var(--background); border-radius: 4px; padding: 12px 6px; margin: 8px 0;">
+          <div class="bill-row-label" style="font-weight: bold;">
+            <span class="hi">सकल राशि / Gross Amount</span>
+          </div>
+          <div></div>
+          <div></div>
+          <div class="form-group" style="margin-bottom: 0;">
+            <input type="number" id="partBGrossTotal" class="form-control" style="text-align: right; font-weight: bold;" placeholder="Gross Amount" min="0" readonly>
+          </div>
+        </div>
+
+        <!-- Less Advance Deductions -->
+        <div class="bill-row-grid">
+          <div class="bill-row-label">
+            <span class="hi">घटाएं: अग्रिम यात्रा भत्ता राशि (तारीख और वाउचर सं. सहित)</span>
+            Less amount of T.A. advance, if any drawn
+          </div>
+          <div class="form-group" style="margin-bottom: 0;">
+            <input type="text" id="partBAdvanceVoucher" class="form-control" placeholder="वाउचर नंबर / Voucher No.">
+          </div>
+          <div class="form-group" style="margin-bottom: 0;">
+            <input type="date" id="partBAdvanceDate" class="form-control" placeholder="दिनांक / Date">
+          </div>
+          <div class="form-group" style="margin-bottom: 0;">
+            <input type="number" id="partBAdvanceTotal" class="form-control" style="text-align: right;" placeholder="Advance Rs." min="0" oninput="runCalculations()">
+          </div>
+        </div>
+
+        <!-- Net Amount -->
+        <div class="bill-row-grid" style="border-bottom: 2px solid var(--primary); font-weight: bold; border-top: 1px solid var(--border); padding-top: 12px; margin-top: 12px;">
+          <div class="bill-row-label" style="font-weight: bold; font-size: 1.05rem; color: var(--primary);">
+            <span class="hi">कुल राशि / Net Amount</span>
+          </div>
+          <div></div>
+          <div></div>
+          <div class="form-group" style="margin-bottom: 0;">
+            <input type="number" id="partBNetTotal" class="form-control" style="text-align: right; font-weight: bold; font-size: 1.05rem; border-color: var(--primary);" placeholder="Net Amount" min="0" readonly>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Net Amount In Words Display -->
+      <div class="words-box">
+        <span class="lbl-words">रुपये शब्दों में / Rupees in words:</span>
+        <span id="wordsDisplay">Zero Rupees Only</span>
+      </div>
+
+      <!-- Debitable Head -->
+      <div class="form-group" style="margin-top: 24px; margin-bottom: 32px;">
+        <label>
+          <span class="hi">व्यय इस मद में डाला गया है / Expenditure is debitable to:</span>
+        </label>
+        <input type="text" id="debitableHead" class="form-control" placeholder="बजट मद का नाम...">
+      </div>
+
+      <!-- Clerk and DDO signatures -->
+      <div class="signatures-section" style="margin-top: 40px;">
+        <div class="signature-block">
+          <label><span class="hi">लिपिक के आद्यक्षर</span> / Initials of Bill Clerk</label><br><br>
+          <input type="text" id="clerkSign" placeholder="(आद्यक्षर)">
+        </div>
+        <div class="signature-block">
+          <label><span class="hi">आहरण एवं संवितरण अधिकारी के हस्ताक्षर</span> / Signature of Drawing & Disbursing Officer</label><br><br>
+          <input type="text" id="ddoSign" placeholder="(हस्ताक्षर)">
+        </div>
+      </div>
+
+      <!-- Controlling and Countersign signatures -->
+      <div class="signatures-section" style="margin-top: 40px; border-top: 1px dashed var(--border); padding-top: 32px;">
+        <div class="signature-block">
+          <label><span class="hi">नियंत्रक अधिकारी के हस्ताक्षर</span> / Signature of the Controlling Officer</label><br><br>
+          <input type="text" id="controllingSign" placeholder="(हस्ताक्षर)">
+        </div>
+        <div class="signature-block">
+          <label><span class="hi">प्रतिहस्ताक्षरित</span> / Countersigned</label><br><br>
+          <input type="text" id="countersign" placeholder="(हस्ताक्षर)">
+        </div>
+      </div>
+
+      <!-- Bottom Step Navigation -->
+      <div class="step-actions no-print">
+        <button class="btn" onclick="switchStep(2)">👈 Previous Page / पिछला पृष्ठ</button>
+        <button class="btn btn-success" onclick="window.print()">🖨️ Complete & Print / प्रिंट करें</button>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<!-- Save/Load Toast Notification -->
+<div class="toast" id="toastMessage">Draft Saved Successfully / ड्राफ्ट सफलतापूर्वक सुरक्षित किया गया।</div>
+
+<script src="script.js"></script>
+</body>
+</html>
