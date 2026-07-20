@@ -480,6 +480,7 @@
           <th rowspan="2">सड़क मील भत्ता के लिए दूरी कि.मी. में Distance in Kms. for road mileage</th>
           <th rowspan="2">ठहराव की अवधि Duration of halt</th>
           <th rowspan="2">यात्रा का प्रयोजन Purpose of journey</th>
+          <th rowspan="2" class="no-print action-header">कार्रवाई / Action</th>
         </tr>
         <tr>
           <th>दिनांक एवं समय Date and time</th>
@@ -492,11 +493,11 @@
         <tr>
           <td class="row-sno">1</td>
           <td>
-            <textarea name="dep_time_1" class="datepicker" placeholder="DD.MM.YYYY&#10;HH:MM" onclick="showDatepicker(this)" style="cursor:pointer;" autocomplete="off" rows="2"></textarea>
+            <input type="text" name="dep_time_1" class="plain-input" placeholder="DD.MM.YYYY HH:MM" autocomplete="off">
           </td>
           <td><input type="text" name="dep_from_1"></td>
           <td>
-            <textarea name="arr_time_1" class="datepicker" placeholder="DD.MM.YYYY&#10;HH:MM" onclick="showDatepicker(this)" style="cursor:pointer;" autocomplete="off" rows="2"></textarea>
+            <input type="text" name="arr_time_1" class="plain-input" placeholder="DD.MM.YYYY HH:MM" autocomplete="off">
           </td>
           <td><input type="text" name="arr_to_1"></td>
           <td><input type="text" name="mode_1"></td>
@@ -504,15 +505,18 @@
           <td><input type="text" name="km_1"></td>
           <td><input type="text" name="halt_1"></td>
           <td><input type="text" name="purpose_1"></td>
+          <td class="no-print" style="text-align: center; vertical-align: middle;">
+            <button type="button" class="btn-remove" onclick="removeJourneyRow(this)" style="background: #c0392b; color: #fff; border: none; border-radius: 4px; padding: 2px 6px; cursor: pointer; font-weight: bold; font-size: 8.5pt;">X</button>
+          </td>
         </tr>
         <tr>
           <td class="row-sno">2</td>
           <td>
-            <textarea name="dep_time_2" class="datepicker" placeholder="DD.MM.YYYY&#10;HH:MM" onclick="showDatepicker(this)" style="cursor:pointer;" autocomplete="off" rows="2"></textarea>
+            <input type="text" name="dep_time_2" class="plain-input" placeholder="DD.MM.YYYY HH:MM" autocomplete="off">
           </td>
           <td><input type="text" name="dep_from_2"></td>
           <td>
-            <textarea name="arr_time_2" class="datepicker" placeholder="DD.MM.YYYY&#10;HH:MM" onclick="showDatepicker(this)" style="cursor:pointer;" autocomplete="off" rows="2"></textarea>
+            <input type="text" name="arr_time_2" class="plain-input" placeholder="DD.MM.YYYY HH:MM" autocomplete="off">
           </td>
           <td><input type="text" name="arr_to_2"></td>
           <td><input type="text" name="mode_2"></td>
@@ -520,15 +524,18 @@
           <td><input type="text" name="km_2"></td>
           <td><input type="text" name="halt_2"></td>
           <td><input type="text" name="purpose_2"></td>
+          <td class="no-print" style="text-align: center; vertical-align: middle;">
+            <button type="button" class="btn-remove" onclick="removeJourneyRow(this)" style="background: #c0392b; color: #fff; border: none; border-radius: 4px; padding: 2px 6px; cursor: pointer; font-weight: bold; font-size: 8.5pt;">X</button>
+          </td>
         </tr>
         <tr>
           <td class="row-sno">3</td>
           <td>
-            <textarea name="dep_time_3" class="datepicker" placeholder="DD.MM.YYYY&#10;HH:MM" onclick="showDatepicker(this)" style="cursor:pointer;" autocomplete="off" rows="2"></textarea>
+            <input type="text" name="dep_time_3" class="plain-input" placeholder="DD.MM.YYYY HH:MM" autocomplete="off">
           </td>
           <td><input type="text" name="dep_from_3"></td>
           <td>
-            <textarea name="arr_time_3" class="datepicker" placeholder="DD.MM.YYYY&#10;HH:MM" onclick="showDatepicker(this)" style="cursor:pointer;" autocomplete="off" rows="2"></textarea>
+            <input type="text" name="arr_time_3" class="plain-input" placeholder="DD.MM.YYYY HH:MM" autocomplete="off">
           </td>
           <td><input type="text" name="arr_to_3"></td>
           <td><input type="text" name="mode_3"></td>
@@ -536,15 +543,18 @@
           <td><input type="text" name="km_3"></td>
           <td><input type="text" name="halt_3"></td>
           <td><input type="text" name="purpose_3"></td>
+          <td class="no-print" style="text-align: center; vertical-align: middle;">
+            <button type="button" class="btn-remove" onclick="removeJourneyRow(this)" style="background: #c0392b; color: #fff; border: none; border-radius: 4px; padding: 2px 6px; cursor: pointer; font-weight: bold; font-size: 8.5pt;">X</button>
+          </td>
         </tr>
         <tr>
           <td class="row-sno">4</td>
           <td>
-            <textarea name="dep_time_4" class="datepicker" placeholder="DD.MM.YYYY&#10;HH:MM" onclick="showDatepicker(this)" style="cursor:pointer;" autocomplete="off" rows="2"></textarea>
+            <input type="text" name="dep_time_4" class="plain-input" placeholder="DD.MM.YYYY HH:MM" autocomplete="off">
           </td>
           <td><input type="text" name="dep_from_4"></td>
           <td>
-            <textarea name="arr_time_4" class="datepicker" placeholder="DD.MM.YYYY&#10;HH:MM" onclick="showDatepicker(this)" style="cursor:pointer;" autocomplete="off" rows="2"></textarea>
+            <input type="text" name="arr_time_4" class="plain-input" placeholder="DD.MM.YYYY HH:MM" autocomplete="off">
           </td>
           <td><input type="text" name="arr_to_4"></td>
           <td><input type="text" name="mode_4"></td>
@@ -552,15 +562,18 @@
           <td><input type="text" name="km_4"></td>
           <td><input type="text" name="halt_4"></td>
           <td><input type="text" name="purpose_4"></td>
+          <td class="no-print" style="text-align: center; vertical-align: middle;">
+            <button type="button" class="btn-remove" onclick="removeJourneyRow(this)" style="background: #c0392b; color: #fff; border: none; border-radius: 4px; padding: 2px 6px; cursor: pointer; font-weight: bold; font-size: 8.5pt;">X</button>
+          </td>
         </tr>
         <tr>
           <td class="row-sno">5</td>
           <td>
-            <textarea name="dep_time_5" class="datepicker" placeholder="DD.MM.YYYY&#10;HH:MM" onclick="showDatepicker(this)" style="cursor:pointer;" autocomplete="off" rows="2"></textarea>
+            <input type="text" name="dep_time_5" class="plain-input" placeholder="DD.MM.YYYY HH:MM" autocomplete="off">
           </td>
           <td><input type="text" name="dep_from_5"></td>
           <td>
-            <textarea name="arr_time_5" class="datepicker" placeholder="DD.MM.YYYY&#10;HH:MM" onclick="showDatepicker(this)" style="cursor:pointer;" autocomplete="off" rows="2"></textarea>
+            <input type="text" name="arr_time_5" class="plain-input" placeholder="DD.MM.YYYY HH:MM" autocomplete="off">
           </td>
           <td><input type="text" name="arr_to_5"></td>
           <td><input type="text" name="mode_5"></td>
@@ -568,15 +581,18 @@
           <td><input type="text" name="km_5"></td>
           <td><input type="text" name="halt_5"></td>
           <td><input type="text" name="purpose_5"></td>
+          <td class="no-print" style="text-align: center; vertical-align: middle;">
+            <button type="button" class="btn-remove" onclick="removeJourneyRow(this)" style="background: #c0392b; color: #fff; border: none; border-radius: 4px; padding: 2px 6px; cursor: pointer; font-weight: bold; font-size: 8.5pt;">X</button>
+          </td>
         </tr>
         <tr>
           <td class="row-sno">6</td>
           <td>
-            <textarea name="dep_time_6" class="datepicker" placeholder="DD.MM.YYYY&#10;HH:MM" onclick="showDatepicker(this)" style="cursor:pointer;" autocomplete="off" rows="2"></textarea>
+            <input type="text" name="dep_time_6" class="plain-input" placeholder="DD.MM.YYYY HH:MM" autocomplete="off">
           </td>
           <td><input type="text" name="dep_from_6"></td>
           <td>
-            <textarea name="arr_time_6" class="datepicker" placeholder="DD.MM.YYYY&#10;HH:MM" onclick="showDatepicker(this)" style="cursor:pointer;" autocomplete="off" rows="2"></textarea>
+            <input type="text" name="arr_time_6" class="plain-input" placeholder="DD.MM.YYYY HH:MM" autocomplete="off">
           </td>
           <td><input type="text" name="arr_to_6"></td>
           <td><input type="text" name="mode_6"></td>
@@ -584,9 +600,15 @@
           <td><input type="text" name="km_6"></td>
           <td><input type="text" name="halt_6"></td>
           <td><input type="text" name="purpose_6"></td>
+          <td class="no-print" style="text-align: center; vertical-align: middle;">
+            <button type="button" class="btn-remove" onclick="removeJourneyRow(this)" style="background: #c0392b; color: #fff; border: none; border-radius: 4px; padding: 2px 6px; cursor: pointer; font-weight: bold; font-size: 8.5pt;">X</button>
+          </td>
         </tr>
       </tbody>
     </table>
+    <div class="no-print" style="margin-top: 8px; text-align: left;">
+      <button type="button" onclick="addJourneyRow()" style="padding: 6px 12px; background: #27ae60; color: #fff; border: none; border-radius: 4px; cursor: pointer; font-size: 9pt; font-weight: bold;">+ यात्रा जोड़ें / Add Row</button>
+    </div>
   </div>
 
   <!-- ========== PAGE 2 ========== -->
@@ -733,15 +755,19 @@
           <th>होटल का नाम Name of the Hotel</th>
           <th>दैनिक आवास दर Daily rate of lodging charged</th>
           <th>भुगतान की गई कुल राशि Total amount paid</th>
+          <th class="no-print action-header">कार्रवाई / Action</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody id="hotelBody">
         <tr>
           <td>1</td>
           <td><input type="text" name="hotel_from_1" class="datepicker" placeholder="DD.MM.YYYY" onclick="showDatepicker(this)" style="cursor:pointer;" autocomplete="off"> से/To <input type="text" name="hotel_to_1" class="datepicker" placeholder="DD.MM.YYYY" onclick="showDatepicker(this)" style="cursor:pointer;" autocomplete="off"></td>
           <td><input type="text" name="hotel_name_1"></td>
           <td><input type="text" name="hotel_rate_1"></td>
           <td><input type="text" name="hotel_total_1"></td>
+          <td class="no-print" style="text-align: center; vertical-align: middle;">
+            <button type="button" class="btn-remove" onclick="removeHotelRow(this)" style="background: #c0392b; color: #fff; border: none; border-radius: 4px; padding: 2px 6px; cursor: pointer; font-weight: bold; font-size: 8.5pt;">X</button>
+          </td>
         </tr>
         <tr>
           <td>2</td>
@@ -749,6 +775,9 @@
           <td><input type="text" name="hotel_name_2"></td>
           <td><input type="text" name="hotel_rate_2"></td>
           <td><input type="text" name="hotel_total_2"></td>
+          <td class="no-print" style="text-align: center; vertical-align: middle;">
+            <button type="button" class="btn-remove" onclick="removeHotelRow(this)" style="background: #c0392b; color: #fff; border: none; border-radius: 4px; padding: 2px 6px; cursor: pointer; font-weight: bold; font-size: 8.5pt;">X</button>
+          </td>
         </tr>
         <tr>
           <td>3</td>
@@ -756,9 +785,15 @@
           <td><input type="text" name="hotel_name_3"></td>
           <td><input type="text" name="hotel_rate_3"></td>
           <td><input type="text" name="hotel_total_3"></td>
+          <td class="no-print" style="text-align: center; vertical-align: middle;">
+            <button type="button" class="btn-remove" onclick="removeHotelRow(this)" style="background: #c0392b; color: #fff; border: none; border-radius: 4px; padding: 2px 6px; cursor: pointer; font-weight: bold; font-size: 8.5pt;">X</button>
+          </td>
         </tr>
       </tbody>
     </table>
+    <div class="no-print" style="margin-top: 8px; text-align: left;">
+      <button type="button" onclick="addHotelRow()" style="padding: 6px 12px; background: #27ae60; color: #fff; border: none; border-radius: 4px; cursor: pointer; font-size: 9pt; font-weight: bold;">+ होटल ठहरने का स्थान जोड़ें / Add Row</button>
+    </div>
   </div>
 
   <!-- ========== PAGE 3 ========== -->
@@ -781,13 +816,14 @@
           <th rowspan="2">उपयोग में लाए गए वाहन का प्रकार Mode of conveyance used</th>
           <th colspan="2">वर्ग / Class</th>
           <th rowspan="2">यात्रा का किराया Fare of the journey</th>
+          <th rowspan="2" class="no-print action-header">कार्रवाई / Action</th>
         </tr>
         <tr>
           <th>जिसका हकदार है Entitled to</th>
           <th>जिसमें यात्रा की Travelled</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody id="highClassBody">
         <tr>
           <td>1</td>
           <td><input type="text" name="high_class_date_1" class="datepicker" placeholder="DD.MM.YYYY" onclick="showDatepicker(this)" style="cursor:pointer;" autocomplete="off"></td>
@@ -795,6 +831,9 @@
           <td><input type="text" name="high_class_entitled_1"></td>
           <td><input type="text" name="high_class_travelled_1"></td>
           <td><input type="text" name="high_class_fare_1"></td>
+          <td class="no-print" style="text-align: center; vertical-align: middle;">
+            <button type="button" class="btn-remove" onclick="removeHighClassRow(this)" style="background: #c0392b; color: #fff; border: none; border-radius: 4px; padding: 2px 6px; cursor: pointer; font-weight: bold; font-size: 8.5pt;">X</button>
+          </td>
         </tr>
         <tr>
           <td>2</td>
@@ -803,6 +842,9 @@
           <td><input type="text" name="high_class_entitled_2"></td>
           <td><input type="text" name="high_class_travelled_2"></td>
           <td><input type="text" name="high_class_fare_2"></td>
+          <td class="no-print" style="text-align: center; vertical-align: middle;">
+            <button type="button" class="btn-remove" onclick="removeHighClassRow(this)" style="background: #c0392b; color: #fff; border: none; border-radius: 4px; padding: 2px 6px; cursor: pointer; font-weight: bold; font-size: 8.5pt;">X</button>
+          </td>
         </tr>
         <tr>
           <td>3</td>
@@ -811,9 +853,15 @@
           <td><input type="text" name="high_class_entitled_3"></td>
           <td><input type="text" name="high_class_travelled_3"></td>
           <td><input type="text" name="high_class_fare_3"></td>
+          <td class="no-print" style="text-align: center; vertical-align: middle;">
+            <button type="button" class="btn-remove" onclick="removeHighClassRow(this)" style="background: #c0392b; color: #fff; border: none; border-radius: 4px; padding: 2px 6px; cursor: pointer; font-weight: bold; font-size: 8.5pt;">X</button>
+          </td>
         </tr>
       </tbody>
     </table>
+    <div class="no-print" style="margin-top: 8px; text-align: left;">
+      <button type="button" onclick="addHighClassRow()" style="padding: 6px 12px; background: #27ae60; color: #fff; border: none; border-radius: 4px; cursor: pointer; font-size: 9pt; font-weight: bold;">+ उच्च श्रेणी यात्रा जोड़ें / Add Row</button>
+    </div>
 
     <div class="field-group">
       <span class="field-label">यदि उच्चतर वर्ग की सुविधा द्वारा यात्रा (एं) सक्षम प्राधिकारी की मंजूरी से की गई है, तो मंजूरी की संख्या और दिनांक उद्धृत की जाए।</span>
@@ -834,19 +882,23 @@
           <th rowspan="2">दिनांक Date</th>
           <th colspan="2">स्थानों के नाम / Name of Places</th>
           <th rowspan="2">किराया Fare paid</th>
+          <th rowspan="2" class="no-print action-header">कार्रवाई / Action</th>
         </tr>
         <tr>
           <th>से From</th>
           <th>तक To</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody id="roadBody">
         <tr>
           <td>1</td>
           <td><input type="text" name="road_date_1" class="datepicker" placeholder="DD.MM.YYYY" onclick="showDatepicker(this)" style="cursor:pointer;" autocomplete="off"></td>
           <td><input type="text" name="road_from_1"></td>
           <td><input type="text" name="road_to_1"></td>
           <td><input type="text" name="road_fare_1"></td>
+          <td class="no-print" style="text-align: center; vertical-align: middle;">
+            <button type="button" class="btn-remove" onclick="removeRoadRow(this)" style="background: #c0392b; color: #fff; border: none; border-radius: 4px; padding: 2px 6px; cursor: pointer; font-weight: bold; font-size: 8.5pt;">X</button>
+          </td>
         </tr>
         <tr>
           <td>2</td>
@@ -854,6 +906,9 @@
           <td><input type="text" name="road_from_2"></td>
           <td><input type="text" name="road_to_2"></td>
           <td><input type="text" name="road_fare_2"></td>
+          <td class="no-print" style="text-align: center; vertical-align: middle;">
+            <button type="button" class="btn-remove" onclick="removeRoadRow(this)" style="background: #c0392b; color: #fff; border: none; border-radius: 4px; padding: 2px 6px; cursor: pointer; font-weight: bold; font-size: 8.5pt;">X</button>
+          </td>
         </tr>
         <tr>
           <td>3</td>
@@ -861,9 +916,15 @@
           <td><input type="text" name="road_from_3"></td>
           <td><input type="text" name="road_to_3"></td>
           <td><input type="text" name="road_fare_3"></td>
+          <td class="no-print" style="text-align: center; vertical-align: middle;">
+            <button type="button" class="btn-remove" onclick="removeRoadRow(this)" style="background: #c0392b; color: #fff; border: none; border-radius: 4px; padding: 2px 6px; cursor: pointer; font-weight: bold; font-size: 8.5pt;">X</button>
+          </td>
         </tr>
       </tbody>
     </table>
+    <div class="no-print" style="margin-top: 8px; text-align: left;">
+      <button type="button" onclick="addRoadRow()" style="padding: 6px 12px; background: #27ae60; color: #fff; border: none; border-radius: 4px; cursor: pointer; font-size: 9pt; font-weight: bold;">+ सड़क यात्रा जोड़ें / Add Row</button>
+    </div>
 
     <div class="field-group">
       <span class="field-no">13.</span>
@@ -1024,7 +1085,7 @@
 
       // Convert table inputs to auto-resizing textareas dynamically on page load
       function convertTableInputsToTextareas() {
-        var inputs = document.querySelectorAll('table.data-table td input[type="text"]:not(.datepicker)');
+        var inputs = document.querySelectorAll('table.data-table td input[type="text"]:not(.datepicker):not(.plain-input)');
         for (var i = 0; i < inputs.length; i++) {
           (function() {
             var input = inputs[i];
@@ -1072,7 +1133,106 @@
       convertTableInputsToTextareas();
 
       // Dynamic journey row functions
-      // Dynamic rows disabled
+      function updateRowIndices(tbodyId, prefixList) {
+        var tbody = document.getElementById(tbodyId);
+        if (!tbody) return;
+        var rows = tbody.querySelectorAll('tr');
+        rows.forEach(function(row, index) {
+          var sNo = index + 1;
+          var snoCell = row.querySelector('.row-sno') || row.cells[0];
+          if (snoCell) {
+            snoCell.textContent = sNo;
+          }
+          
+          prefixList.forEach(function(prefix) {
+            var inputs = row.querySelectorAll('[name^="' + prefix + '"]');
+            inputs.forEach(function(input) {
+              var nameAttr = input.getAttribute('name');
+              var newName = nameAttr.replace(/\d+$/, sNo);
+              input.setAttribute('name', newName);
+            });
+          });
+        });
+      }
+
+      function addRow(tbodyId, prefixList) {
+        var tbody = document.getElementById(tbodyId);
+        if (!tbody) return;
+        var rows = tbody.querySelectorAll('tr');
+        if (rows.length === 0) return;
+        
+        var clone = rows[0].cloneNode(true);
+        
+        var inputs = clone.querySelectorAll('input, textarea, select');
+        inputs.forEach(function(input) {
+          input.value = '';
+          if (input.tagName.toLowerCase() === 'textarea') {
+            input.style.height = 'auto';
+          }
+        });
+        
+        tbody.appendChild(clone);
+        
+        inputs.forEach(function(input) {
+          if (input.tagName.toLowerCase() === 'textarea') {
+            input.addEventListener('focus', function() {
+              this.style.background = '#f0f8ff';
+            });
+            input.addEventListener('blur', function() {
+              this.style.background = 'transparent';
+            });
+            input.addEventListener('input', function() {
+              this.style.height = 'auto';
+              this.style.height = this.scrollHeight + 'px';
+            });
+          }
+        });
+        
+        updateRowIndices(tbodyId, prefixList);
+      }
+
+      function removeRow(btn, tbodyId, prefixList) {
+        var tbody = document.getElementById(tbodyId);
+        if (!tbody) return;
+        var rows = tbody.querySelectorAll('tr');
+        if (rows.length <= 1) {
+          alert('न्यूनतम एक पंक्ति आवश्यक है। / At least one row is required.');
+          return;
+        }
+        var tr = btn.closest('tr');
+        if (tr) {
+          tr.parentNode.removeChild(tr);
+          updateRowIndices(tbodyId, prefixList);
+        }
+      }
+
+      window.addJourneyRow = function() {
+        addRow('journeyBody', ['dep_time_', 'dep_from_', 'arr_time_', 'arr_to_', 'mode_', 'fare_', 'km_', 'halt_', 'purpose_']);
+      };
+      window.removeJourneyRow = function(btn) {
+        removeRow(btn, 'journeyBody', ['dep_time_', 'dep_from_', 'arr_time_', 'arr_to_', 'mode_', 'fare_', 'km_', 'halt_', 'purpose_']);
+      };
+
+      window.addHotelRow = function() {
+        addRow('hotelBody', ['hotel_from_', 'hotel_to_', 'hotel_name_', 'hotel_rate_', 'hotel_total_']);
+      };
+      window.removeHotelRow = function(btn) {
+        removeRow(btn, 'hotelBody', ['hotel_from_', 'hotel_to_', 'hotel_name_', 'hotel_rate_', 'hotel_total_']);
+      };
+
+      window.addHighClassRow = function() {
+        addRow('highClassBody', ['high_class_date_', 'high_class_mode_', 'high_class_entitled_', 'high_class_travelled_', 'high_class_fare_']);
+      };
+      window.removeHighClassRow = function(btn) {
+        removeRow(btn, 'highClassBody', ['high_class_date_', 'high_class_mode_', 'high_class_entitled_', 'high_class_travelled_', 'high_class_fare_']);
+      };
+
+      window.addRoadRow = function() {
+        addRow('roadBody', ['road_date_', 'road_from_', 'road_to_', 'road_fare_']);
+      };
+      window.removeRoadRow = function(btn) {
+        removeRow(btn, 'roadBody', ['road_date_', 'road_from_', 'road_to_', 'road_fare_']);
+      };
 
       function fillSampleData() {
         var sampleData = {
@@ -1082,18 +1242,18 @@
           'pay': '56100',
           'level': '7',
           'headquarters': 'दिल्ली / Delhi',
-          'dep_time_1': '01.07.2026\n08:00',
+          'dep_time_1': '01.07.2026 08:00',
           'dep_from_1': 'दिल्ली / Delhi',
-          'arr_time_1': '01.07.2026\n14:00',
+          'arr_time_1': '01.07.2026 14:00',
           'arr_to_1': 'लखनऊ / Lucknow',
           'mode_1': 'रेल/एसी 3-टियर / Rail/AC 3-Tier',
           'fare_1': '1250.00',
           'km_1': '550',
           'halt_1': '2 दिन / Days',
           'purpose_1': 'निरीक्षण / Inspection',
-          'dep_time_2': '03.07.2026\n16:00',
+          'dep_time_2': '03.07.2026 16:00',
           'dep_from_2': 'लखनऊ / Lucknow',
-          'arr_time_2': '03.07.2026\n22:00',
+          'arr_time_2': '03.07.2026 22:00',
           'arr_to_2': 'दिल्ली / Delhi',
           'mode_2': 'रेल/एसी 3-टियर / Rail/AC 3-Tier',
           'fare_2': '1250.00',
@@ -1240,6 +1400,7 @@
             var colIndex = parseInt(th.dataset.colIndex, 10);
             var colspan = parseInt(th.dataset.colspan, 10);
             if (colspan > 1) return;
+            if (th.classList.contains('action-header') || th.classList.contains('no-print')) return;
             if (th.querySelector('.resizer')) return;
             
             var resizer = document.createElement('div');
